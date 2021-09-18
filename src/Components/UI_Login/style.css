@@ -3,11 +3,14 @@
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Poppins';
+    background-image: url(../../img/background.svg);
+    background-position: center;
+    background-size: 1800px;
+    background-repeat: no-repeat;
   }
   
   .box {
@@ -200,7 +203,8 @@
   }
   
   .image {
-    width: 100%;
+    width: 90%;
+    margin: 1rem;
     grid-column: 1/2;
     grid-row: 1/2;
     opacity: 0;

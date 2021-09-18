@@ -1,28 +1,25 @@
 import React from "react";
-//import { BtnSocialIcon } from "../Tailwind/LoginTW";
-
 
 export const SocialIcons = () => {
-
-    //TODO: Crear el Dispatch
+  //TODO: Crear el Dispatch
 
   return (
     <div className="flex justify-center items-center my-2">
-      {/* <BtnSocialIcon $Red>
+      <button className='h-8 w-8 p-5 flex justify-center items-center border-2 border-gray-500 text-gray-500 rounded-full m-1 hover:border-second hover:text-second transition-colors duration-300 ease-linear'>
         <i className="fab fa-google"></i>
-      </BtnSocialIcon>
-      <BtnSocialIcon $Blue>
+      </button>
+      <button className="h-8 w-8 p-5 flex justify-center items-center border-2 border-gray-500 text-gray-500 rounded-full m-1 hover:border-primary hover:text-primary transition-colors duration-300 ease-linear">
         <i className="fab fa-facebook-f"></i>
-      </BtnSocialIcon>
-      <BtnSocialIcon $Red>
-      <i className="fab fa-twitter"></i>
-      </BtnSocialIcon>
-      <BtnSocialIcon $Blue>
+      </button>
+      <button className='h-8 w-8 p-5 flex justify-center items-center border-2 border-gray-500 text-gray-500 rounded-full m-1 hover:border-second hover:text-second transition-colors duration-300 ease-linear'>
+        <i className="fab fa-twitter"></i>
+      </button>
+      <button className="h-8 w-8 p-5 flex justify-center items-center border-2 border-gray-500 text-gray-500 rounded-full m-1 hover:border-primary hover:text-primary transition-colors duration-300 ease-linear">
         <i className="fab fa-microsoft"></i>
-      </BtnSocialIcon>
-      <BtnSocialIcon $Red>
+      </button>
+      <button className='h-8 w-8 p-5 flex justify-center items-center border-2 border-gray-500 text-gray-500 rounded-full m-1 hover:border-second hover:text-second transition-colors duration-300 ease-linear'>
         <i className="fab fa-github"></i>
-      </BtnSocialIcon> */}
+      </button>
     </div>
   );
 };

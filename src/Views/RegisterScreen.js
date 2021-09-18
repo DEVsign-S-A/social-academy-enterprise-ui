@@ -3,17 +3,16 @@ import "../Components/UI_Login/style.css";
 import { SocialIconsRegister } from "../Components/UI_Login/SocialIconsRegister";
 import { useDispatch, useSelector } from "react-redux";
 import { setToggleForm } from "../Redux/Actions/uiAction";
+import build from "../Assets/UI_Login/buil.svg";
 
 const RegisterScreen = ({ props }) => {
-
-  const {toggleForm} = useSelector(state => state.ui);
+  const { toggleForm } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
 
   const handleToggleForm = () => {
     dispatch(setToggleForm(!toggleForm));
-  }
-
+  };
 
   return (
     <>
@@ -23,7 +22,8 @@ const RegisterScreen = ({ props }) => {
         autocomplete="off"
         className="sign-up-form"
       >
-        <div className="">
+        <div className="flex -ml-8">
+          <img src={build} alt="sociallog" className="mx-3 my-3" />
           <img
             src={`./assets/Logos/sociallog.svg`}
             alt="sociallog"
@@ -34,10 +34,7 @@ const RegisterScreen = ({ props }) => {
         <div className="heading">
           <h2>Empezemos</h2>
           <h6>¿Ya tienes una cuenta?</h6>
-          <p
-            className="toggle"
-            onClick={handleToggleForm}
-          >
+          <p className="toggle" onClick={handleToggleForm}>
             Inicia Sesión
           </p>
         </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../Components/UI_Login/style.css";
-import im01 from "../Assets/UI_Login/image1.png";
-import im02 from "../Assets/UI_Login/image2.png";
-import im03 from "../Assets/UI_Login/image3.png";
+import im01 from "../Assets/UI_Login/imagen01.svg";
+import im02 from "../Assets/UI_Login/imagen02.svg";
+import im03 from "../Assets/UI_Login/imagen03.svg";
+import build from "../Assets/UI_Login/buil.svg";
 import RegisterScreen from "./RegisterScreen";
 import { Footer } from "../Components/UI_Footer/Footer";
 import {SocialIcons} from '../Components/UI_Login/SocialIcons'
@@ -63,7 +64,12 @@ const LoginScreen = () => {
                 className="sign-in-form"
                 id="form"
               >
-                <div className="">
+                <div className="flex -ml-8">
+                  <img
+                    src={build}
+                    alt="sociallog"
+                    className="mx-3 my-3"
+                  />
                   <img
                     src={`./assets/Logos/sociallog.svg`}
                     alt="sociallog"
@@ -72,7 +78,9 @@ const LoginScreen = () => {
                 </div>
 
                 <div className="heading">
+                
                   <h2 className="text-second">Bienvenido</h2>
+
                   <h6>¿Todavía no estas registrado?</h6>
                   <p className="toggle" onClick={handleToggleForm}>
                     Registrate
@@ -128,9 +136,9 @@ const LoginScreen = () => {
               <div className="text-slider">
                 <div className="text-wrap">
                   <div className="text-group">
-                    <h2>Crea tus propios cursos</h2>
-                    <h2>Resuelve tus dudas puntuales</h2>
-                    <h2>Busca posibles pasantias</h2>
+                    <h2>Crea tus ofertas de pasantías</h2>
+                    <h2>Busca personal capacitado</h2>
+                    <h2>Maximiza tu productividad</h2>
                   </div>
                 </div>
 
