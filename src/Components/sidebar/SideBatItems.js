@@ -1,53 +1,57 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Li } from "../Li";
-import { Span } from "../Span";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setItemSelected } from "../../Redux/Actions/uiAction";
 import "./style.css";
+import "./SidebarStyle.css";
 
 export const SideBatItems = ({ name, image, handleSelected, id, hide }) => {
   const { showSidebar } = useSelector((state) => state.ui);
 
   const history = useHistory();
 
+  const dispatch = useDispatch();
+
+  
+  
   const itemSelected = (id) => {
-
-
-    handleSelected(id);
+    
+    dispatch(setItemSelected(id));
 
     // Para Redirigir hacia las diferentes pantallas que se vayan a crear se hara de esta forma
     switch (id) {
       case "1":
-        history.push("/teachers_admin");
+       history.push("/IntershipRequest");
         break;
         
       case "2":
-        history.push("/teachers_rates");
+         history.push("/MyProfile");
         break;
 
       case "3":
-        history.push("/teachers_lessons");
+         history.push("/CreatesInterships");
         break;
 
       default:
-        history.push("/");
+        // history.push("/");
     }
 
   };
 
   return (
     <>
-      <Li
-        $items_sidebar
-        className={`${hide && "bg-white shadow-lg"}`}
+      <li
+        className={`items_sidebar ${ hide && "bg-gray-100 shadow-lg"}`}
         onClick={() => itemSelected(id)}
       >
         <div className="flex items-center">
-          <img src={image} alt="icon" />
-          {showSidebar && <Span $span_sidebar>{name}</Span>}
+          <img src={image} alt="icon" 
+            className={` ${showSidebar && "w-1/5"} `}
+          />
+          {showSidebar && <span className='lg:mx-3 font-medium text-gray-500 lg:text-xl text-sm mx-2'>{name}</span>}
         </div>
         <span className="tooltip">{name}</span>
-      </Li>
+      </li>
     </>
   );
 };

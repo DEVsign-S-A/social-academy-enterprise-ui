@@ -1,0 +1,8 @@
+.items_sidebar {
+    @apply cursor-pointer px-3 py-4 mx-3 my-2 rounded-lg hover:bg-gray-100 hover:shadow-md transition-all ease-linear duration-200
+
+}
+
+.items_sidebar.active {
+   @apply rounded-lg shadow-md transition-all ease-linear duration-200
+}

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 
 
-import { PrivateRoute } from "./PrivateRoute";
+// import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import LoginScreen from "../Views/LoginScreen";
 import RegisterScreen from "../Views/RegisterScreen";

@@ -1,5 +1,4 @@
 import React from "react";
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { setSidebar } from "../../Redux/Actions/uiAction";
 
@@ -20,7 +19,6 @@ export const Header = () => {
         <nav>
           <button onClick={handleClick}
             className="mx-5 text-2xl cursor-pointer text-gray-700 bg">
-            <HiOutlineMenuAlt2  />
           </button>
         </nav>
       </header>

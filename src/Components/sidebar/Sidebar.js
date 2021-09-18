@@ -1,98 +1,65 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SideBatItems } from "./SideBatItems";
 
-import logo from "../../assets/logo.svg";
-import X from "../../assets/X.svg";
+import logo from "../../Assets/sociallog.svg";
+import right from "../../Assets/Menu.svg";
+import X from "../../Assets/X.svg";
 import "./style.css";
 import { setSidebar } from "../../Redux/Actions/uiAction";
 
 export const Sidebar = () => {
-	const { showSidebar } = useSelector((state) => state.ui);
+  const { showSidebar, itemsSidebar } = useSelector((state) => state.ui);
 
+  const dispatch = useDispatch();
 
-  	const [itemsSidebar, setitemsSidebar] = useState([
+  const handleClose = () => {
+    dispatch(setSidebar(!showSidebar));
+  };
 
-		{
-			id: "1",
-			name: "Teachers",
-			image: `${"./assets/Project.svg"}`,
-			hide: false,
-		},
-		{
-			id: "2",
-			name: "Teacher Rates",
-			image: `${"./assets/Text.svg"}`,
-			hide: false,
-		},
-		{
-			id: "3",
-			name: "Register Lessons",
-			image: `${"./assets/Project.svg"}`,
-			hide: false,
-		},
-		{
-			id: "4",
-			name: "Mini chanllenges",
-			image: `${"./assets/Tasks.svg"}`,
-			hide: false,
-		},
-	]);
+ 
+  return (
+    <div className={`sidebar ${showSidebar && "open"} `}>
+      <br />
+      <div className={`flex ${showSidebar && "m-2"} `}>
+	  <img src={logo} alt="Social Academy Icon" 
+		  className={` ${showSidebar ? "w-full" : "w-48"} `}
+	  />
+        {!showSidebar && (
+          <img
+            src={right}
+            alt="_"
+            onClick={handleClose}
+            className="ml-3 cursor-pointer"
+          />
+        )}
 
-	const dispatch = useDispatch();
+        {showSidebar && (
+          <div className="flex">
+            <img
+              src={X}
+              alt="Close"
+              onClick={handleClose}
+              className={`${
+                showSidebar && "px-4 py-0 ml-5 rounded-md cursor-pointer"
+              } `}
+            />
+          </div>
+        )}
+      </div>
 
-
-	const handleClose = () => {
-		dispatch(setSidebar(!showSidebar));
-	};
-
-	const handleSelected = (id) => {
-		let ItemsCopy = itemsSidebar.map((elem) => {
-			if (elem.id === id) {
-				elem.hide = true;
-			} else {
-				elem.hide = false;
-			}
-			return elem;
-		});
-
-		setitemsSidebar(ItemsCopy);
-    
-	};
-
-	//openSidebar={openSidebar}
-	//${ && "open"}
-	return (
-		<div className={`sidebar ${showSidebar && "open"} `}>
-			<br />
-			<div className={`flex ${showSidebar && "m-2"} `}>
-				<img src={logo} alt="Craving Icon" />
-
-				{showSidebar && (
-					<img
-						src={X}
-						alt="Close"
-						onClick={handleClose}
-						className={`iconClose ${
-							showSidebar &&
-							"px-4 py-0 bg-gray-200 ml-5 rounded-lg cursor-pointer"
-						} `}
-					/>
-				)}
-			</div>
-
-			<ul className="nav-links mt-5">
-				{itemsSidebar.map((itemSidebar) => (
-					<SideBatItems
-						key={itemSidebar.id}
-						id={itemSidebar.id}
-						name={itemSidebar.name}
-						hide={itemSidebar.hide}
-						image={itemSidebar.image}
-						handleSelected={handleSelected}
-					/>
-				))}
-			</ul>
-		</div>
-	);
+      <ul className="nav-links mt-5">
+         {itemsSidebar.map((itemSidebar) => (
+          <SideBatItems
+            key={itemSidebar.id}
+            id={itemSidebar.id}
+            name={itemSidebar.name}
+            hide={itemSidebar.hide}
+            image={itemSidebar.image}
+            // handleSelected={handleSelected}
+          />
+        ))}
+      </ul>
+    </div>
+  );
 };
