@@ -1,31 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setItemSelected } from "../../Redux/Actions/uiAction";
+import { useSelector } from "react-redux";
 import "./style.css";
 import "./SidebarStyle.css";
 
-export const SideBatItems = ({ name, image, handleSelected, id, hide }) => {
+export const SideBatItems = ({ name, image, id, hide }) => {
   const { showSidebar } = useSelector((state) => state.ui);
 
   const history = useHistory();
 
-  const dispatch = useDispatch();
-
-  
-  
   const itemSelected = (id) => {
-    
-    dispatch(setItemSelected(id));
-
+   
     // Para Redirigir hacia las diferentes pantallas que se vayan a crear se hara de esta forma
     switch (id) {
       case "1":
-       history.push("/IntershipRequest");
+       history.push("/MyProfile");
         break;
         
       case "2":
-         history.push("/MyProfile");
+         history.push("/IntershipRequest");
         break;
 
       case "3":

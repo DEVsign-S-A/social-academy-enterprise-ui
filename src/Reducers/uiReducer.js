@@ -6,25 +6,25 @@ const initialState = {
     itemsSidebar: [
         {
             id: "1",
-            name: "Teachers",
+            name: "Mi Perfil",
             image: `${"./assets/sidebar/pen.svg"}`,
             hide: false,
           },
           {
             id: "2",
-            name: "Teacher Rates",
+            name: "Solicitudes",
             image: `${"./assets/sidebar/program.svg"}`,
             hide: false,
           },
           {
             id: "3",
-            name: "Register Lessons",
+            name: "Nueva Oferta",
             image: `${"./assets/sidebar/diagram.svg"}`,
             hide: false,
           },
           {
             id: "4",
-            name: "Mini chanllenges",
+            name: "DashBoards",
             image: `${"./assets/sidebar/finansas.svg"}`,
             hide: false,
           },

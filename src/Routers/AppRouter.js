@@ -7,8 +7,6 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
-
 // import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import LoginScreen from "../Views/LoginScreen";
@@ -16,10 +14,11 @@ import RegisterScreen from "../Views/RegisterScreen";
 import MyProfile from "../Views/MyProfile";
 import IntershipRequest from "../Views/IntershipRequest";
 import CreatesInterships from "../Views/CreatesInterships";
+import NewIntership from "../Views/NewIntership";
 import { Error404 } from "../Views/Error404";
+import { FullIntership } from "../Components/Interships/FullIntership";
 
 export const AppRouter = () => {
-    
   const { firstName } = useSelector((state) => state.auth);
 
   return (
@@ -28,10 +27,11 @@ export const AppRouter = () => {
         <Switch>
           {/* -------------------Rutas Publicas-------------------*/}
 
-          <PublicRoute 
-            exact path="/" 
-            component={LoginScreen} 
-            isAuth={!!firstName} 
+          <PublicRoute
+            exact
+            path="/"
+            component={LoginScreen}
+            isAuth={!!firstName}
           />
 
           <PublicRoute
@@ -55,14 +55,25 @@ export const AppRouter = () => {
             isAuth={!!firstName}
           />
 
-           <PublicRoute
+          <PublicRoute
             exact
             path="/CreatesInterships"
             component={CreatesInterships}
             isAuth={!!firstName}
           />
+          <PublicRoute
+            exact
+            path="/NewIntership"
+            component={NewIntership}
+            isAuth={!!firstName}
+          />
+          <PublicRoute
+            exact
+            path="/EditIntership/:IdIntership"
+            component={FullIntership}
+            isAuth={!!firstName}
+          />
 
-       
           <Route exact path="/error404" component={Error404} />
 
           {/* -------------------Rutas Privadas-------------------*/}
