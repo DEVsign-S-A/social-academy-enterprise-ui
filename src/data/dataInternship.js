@@ -37,8 +37,8 @@ export const dataIntership = [
     ],
     Internshipapplicants: [
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "1825",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
@@ -49,8 +49,8 @@ export const dataIntership = [
         curriculum: "dasjdhasjdhasjdhajsdhask",
       },
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "182",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
@@ -61,8 +61,8 @@ export const dataIntership = [
         curriculum: "dasjdhasjdhasjdhajsdhask",
       },
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "1827",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
@@ -73,8 +73,8 @@ export const dataIntership = [
         curriculum: "dasjdhasjdhasjdhajsdhask",
       },
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "1826",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
@@ -132,8 +132,8 @@ export const dataIntership = [
     ],
     Internshipapplicants: [
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "15289",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
@@ -144,8 +144,8 @@ export const dataIntership = [
         curriculum: "dasjdhasjdhasjdhajsdhask",
       },
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "15283",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
@@ -156,8 +156,8 @@ export const dataIntership = [
         curriculum: "dasjdhasjdhasjdhajsdhask",
       },
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "15696",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
@@ -168,8 +168,8 @@ export const dataIntership = [
         curriculum: "dasjdhasjdhasjdhajsdhask",
       },
       {
-        iduser: "dhasjkdhasjk",
-        photo: "ghsakjd",
+        iduser: "987",
+        photo: `${"./assets/sidebar/AvatarCeleste.svg"}`,
         name: "hjdjaks",
         email: "hajksd",
         telf: "dajshdjashda",
