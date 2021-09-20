@@ -4,8 +4,8 @@ import Travel from "../../Assets/UI_Intership/Travel.svg";
 import Contacts from "../../Assets/UI_Intership/Contacts.svg";
 import Time from "../../Assets/UI_Intership/Time.svg";
 import Dollar from "../../Assets/UI_Intership/Dollar [Fill].svg";
-import show from "../../Assets/UI_Intership/Show.svg";
-import send from "../../Assets/UI_Intership/Send.svg";
+import show from "../../Assets/UI_Intership/Delete.svg";
+import send from "../../Assets/UI_Intership/Pin.svg";
 import { Link } from "react-router-dom";
 
 export const CardsIntership = ({
@@ -62,14 +62,14 @@ export const CardsIntership = ({
           </div>
 
           <div className="flex">
-            <button className="flex font-Poppins text-sm bg-primary text-white shadow-lg cursor-pointer px-3 py-2 rounded-lg mx-3 justify-center items-center">
-              <img src={send} alt="send" className="mx-1" />
-              <p>Aplicar</p>
+            <button className="flex font-Poppins text-sm bg-second text-white shadow-lg cursor-pointer px-3 py-2 rounded-lg mx-3 justify-center items-center">
+              <img src={show} alt="send" className="mx-1" />
+              <p>Eliminar</p>
             </button>
             <Link to={`./EditIntership/${IdIntership}`}>
-              <button className="flex font-Poppins text-sm bg-second text-white shadow-lg cursor-pointer px-3 py-2 rounded-lg mx-3 justify-center items-center">
-                <img src={show} alt="show" className="mx-1" />
-                <p>Ver</p>
+              <button className="flex font-Poppins text-sm bg-primary text-white shadow-lg cursor-pointer px-3 py-2 rounded-lg mx-3 justify-center items-center">
+                <img src={send} alt="show" className="mx-1" />
+                <p>Editar</p>
               </button>
             </Link>
           </div>
