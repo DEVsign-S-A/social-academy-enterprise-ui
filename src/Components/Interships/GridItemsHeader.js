@@ -16,7 +16,7 @@ export const GridItemsHeader = () => {
           </p>
 
           <p className="text-gray-400 text-1s font-bold uppercase laptop:text-2s">
-            telf
+            Teléfono
           </p>
         </div>
       </div>

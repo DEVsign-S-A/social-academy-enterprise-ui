@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import back from "../../Assets/UI_Forum/Arrow-Left.svg";
 
 export const InpustEditInterships = ({
   Title,
@@ -31,10 +32,10 @@ export const InpustEditInterships = ({
             value={Title}
           />
           <button
-            className="flex outline-none px-3 py-2 my-3 bg-second text-white mx-5 rounded-xl shadow-lg font-Poppins font-medium cursor-pointer float-right"
+            className="flex outline-none px-6 py-2 my-3 bg-second text-white mx-5 rounded-xl shadow-lg font-Poppins font-medium cursor-pointer float-right"
             onClick={handleBack}
           >
-            {/* <img src={back} alt="back" className="mt-2 mx-2" /> */}
+            <img src={back} alt="back" className="mt-2 mx-1" />
             Regresar
           </button>
         </div>
