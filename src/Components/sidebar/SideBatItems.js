@@ -14,7 +14,7 @@ export const SideBatItems = ({ name, image, id, hide }) => {
     // Para Redirigir hacia las diferentes pantallas que se vayan a crear se hara de esta forma
     switch (id) {
       case "1":
-       history.push("/MyProfile");
+       history.push("/");
         break;
         
       case "2":
