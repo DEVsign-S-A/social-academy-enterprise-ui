@@ -7,25 +7,25 @@ const initialState = {
         {
             id: "1",
             name: "Mi Perfil",
-            image: `${"./assets/sidebar/pen.svg"}`,
+            image: `https://res.cloudinary.com/socialacademy/image/upload/v1633471289/Social%20Academy%20Image/icons%20General/manager_j3yq64.svg`,
             hide: false,
           },
           {
             id: "2",
             name: "Solicitudes",
-            image: `${"./assets/sidebar/program.svg"}`,
+            image: `https://res.cloudinary.com/socialacademy/image/upload/v1633471289/Social%20Academy%20Image/icons%20General/books_kc0mcd.svg`,
             hide: false,
           },
           {
             id: "3",
             name: "Nueva Oferta",
-            image: `${"./assets/sidebar/diagram.svg"}`,
+            image: `https://res.cloudinary.com/socialacademy/image/upload/v1633471289/Social%20Academy%20Image/icons%20General/growth_iy55te.svg`,
             hide: false,
           },
           {
             id: "4",
             name: "DashBoards",
-            image: `${"./assets/sidebar/finansas.svg"}`,
+            image: `https://res.cloudinary.com/socialacademy/image/upload/v1633471289/Social%20Academy%20Image/icons%20General/quality_pvflxp.svg`,
             hide: false,
           },
     ]

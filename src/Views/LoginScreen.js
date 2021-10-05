@@ -4,11 +4,10 @@ import "../Components/UI_Login/style.css";
 import im01 from "../Assets/UI_Login/imagen01.svg";
 import im02 from "../Assets/UI_Login/imagen02.svg";
 import im03 from "../Assets/UI_Login/imagen03.svg";
-import build from "../Assets/UI_Login/buil.svg";
 import RegisterScreen from "./RegisterScreen";
-import { Footer } from "../Components/UI_Footer/Footer";
 import {SocialIcons} from '../Components/UI_Login/SocialIcons'
 import { setToggleForm } from "../Redux/Actions/uiAction";
+import { useForm } from "../Hook/useForm";
 const LoginScreen = () => {
 
   
@@ -48,6 +47,25 @@ const LoginScreen = () => {
     dispatch(setToggleForm(!toggleForm));
   }
 
+
+
+  const initialForm = {
+    email: '',
+    password: ''
+};
+
+const [ formValues, handleInputChange ] = useForm( initialForm );
+
+
+const {email, password} = formValues;
+
+const handleSubmit = (e) => {
+
+  e.preventDefault();
+
+  
+}
+
   return (
     <>
 
@@ -63,15 +81,11 @@ const LoginScreen = () => {
                 autocomplete="off"
                 className="sign-in-form"
                 id="form"
+                onSubmit={handleSubmit}
               >
-                <div className="flex -ml-8">
+                <div className="flex">
                   <img
-                    src={build}
-                    alt="sociallog"
-                    className="mx-3 my-3"
-                  />
-                  <img
-                    src={`./assets/Logos/sociallog.svg`}
+                    src='https://res.cloudinary.com/socialacademy/image/upload/v1633466520/Social%20Academy%20Image/icons%20General/BLUEACADEM_Y_1_lj0ltd.png'
                     alt="sociallog"
                     className="w-10/12"
                   />
@@ -90,27 +104,31 @@ const LoginScreen = () => {
                 <div className="actual-form">
                   <div className="input-wrap">
                     <input
-                      type="text"
+                      type="email"
                       minlength="4"
+                      name='email'
                       className="input-field"
                       autocomplete="off"
                       required
-                      placeholder="Email"
+                      placeholder="email"
+                      onChange={handleInputChange}
                     />
                   </div>
 
                   <div className="input-wrap">
                     <input
                       type="password"
+                      name="password"
                       minlength="4"
                       className="input-field"
                       autocomplete="off"
                       required
                       placeholder="Contraseña"
+                      onChange={handleInputChange}
                     />
                   </div>
 
-                  <input type="submit" value="Inicia" className="sign-btn" />
+                  <input type="submit" value="Inicia" className="sign-btn" onClick={handleSubmit}/>
                   <p className="text">
                     O Inicia Sesión Con alguna de estas plataformas
                   </p>
@@ -152,7 +170,6 @@ const LoginScreen = () => {
           </div>
         </div>
       </div>
-      <Footer/>
     </>
   );
 };

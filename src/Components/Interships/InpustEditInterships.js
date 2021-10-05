@@ -27,7 +27,7 @@ export const InpustEditInterships = ({
           </p>
           <input
             required={true}
-            className="mx-3 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+            className="mx-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
             type="text"
             value={Title}
           />
@@ -46,7 +46,7 @@ export const InpustEditInterships = ({
             <strong>Descripcion: </strong>
           </p>
           <textarea
-            className="mx-3 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-28 resize-none"
+            className="mx-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-28 resize-none"
             required={true}
             value={Body}
           ></textarea>
@@ -56,7 +56,7 @@ export const InpustEditInterships = ({
             <strong>Detalles Generales: </strong>
           </p>
           <textarea
-            className="mx-3 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-40 resize-none"
+            className="mx-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-40 resize-none"
             required={true}
             value={What_we_want_you_todo}
           ></textarea>
@@ -70,7 +70,7 @@ export const InpustEditInterships = ({
             <>
               <input
                 required={true}
-                className="mx-3 my-2 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+                className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
                 type="text"
                 value={req}
               />
@@ -84,7 +84,7 @@ export const InpustEditInterships = ({
           {Education_Experience.map((edu) => (
             <input
               required={true}
-              className="mx-3 my-2 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+              className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
               type="text"
               value={edu}
             />
@@ -96,7 +96,7 @@ export const InpustEditInterships = ({
             <strong>Puesto de Trabajo: </strong>
             <input
               required={true}
-              className="mx-3 my-2 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+              className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
               type="text"
               value={Job}
             />
@@ -108,7 +108,7 @@ export const InpustEditInterships = ({
           {Careers.map((career) => (
             <input
               required={true}
-              className="mx-3 my-2 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+              className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
               type="text"
               value={career}
             />
@@ -118,7 +118,7 @@ export const InpustEditInterships = ({
             <strong>Jornada Laboral: </strong>
             <input
               required={true}
-              className="mx-3 my-2 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+              className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
               type="text"
               value={Workday}
             />
@@ -128,7 +128,7 @@ export const InpustEditInterships = ({
             <strong>Salario: </strong>
             <input
               required={true}
-              className="mx-3 my-2 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+              className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
               type="text"
               value={SalaryRange}
             />

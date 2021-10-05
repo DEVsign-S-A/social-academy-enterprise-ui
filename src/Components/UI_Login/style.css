@@ -9,7 +9,7 @@
     font-family: 'Poppins';
     background-image: url(../../img/background.svg);
     background-position: center;
-    background-size: 1800px;
+    background-size: 1420px;
     background-repeat: no-repeat;
   }
   
@@ -17,7 +17,7 @@
     position: relative;
     width: 100%;
     max-width: 1020px;
-    height: 640px;
+    height: 680px;
     background-color: #fafafa;
     border-radius: 3.3rem;
     box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.27);

@@ -22,10 +22,9 @@ const RegisterScreen = ({ props }) => {
         autocomplete="off"
         className="sign-up-form"
       >
-        <div className="flex -ml-8">
-          <img src={build} alt="sociallog" className="mx-3 my-3" />
+        <div className="flex">
           <img
-            src={`./assets/Logos/sociallog.svg`}
+            src='https://res.cloudinary.com/socialacademy/image/upload/v1633466520/Social%20Academy%20Image/icons%20General/BLUEACADEM_Y_1_lj0ltd.png'
             alt="sociallog"
             className="w-10/12"
           />
