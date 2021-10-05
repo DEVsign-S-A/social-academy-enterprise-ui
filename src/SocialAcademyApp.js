@@ -1,16 +1,12 @@
 import React from "react";
-import {Provider} from 'react-redux'
+import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
+import { AppRouter } from "./Routers/AppRouter";
 
 export const SocialAcademyApp = () => {
-   return (
-		<Provider store = {store} >
-        {
-            //el Router
-            <h1>
-                Hola Mundo¡¡¡¡
-            </h1>
-        }
-		</Provider>
-	);
-}
+  return (
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  );
+};
