@@ -1,4 +1,5 @@
-import {firebase, googleAuthProvider} from '../../FIrebase/Firebase'
+import { googleAuthProvider, firebase } from "../../firebase/firebase-config";
+
 export const startWithEmailandPass = (email, pass) =>{
 
 
