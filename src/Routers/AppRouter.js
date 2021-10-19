@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 // import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import LoginScreen from "../Views/LoginScreen";
-import RegisterScreen from "../Views/RegisterScreen";
 import MyProfile from "../Views/MyProfile";
 import IntershipRequest from "../Views/IntershipRequest";
 import CreatesInterships from "../Views/CreatesInterships";
@@ -18,9 +17,10 @@ import NewIntership from "../Views/NewIntership";
 import { Error404 } from "../Views/Error404";
 import { FullIntership } from "../Components/Interships/FullIntership";
 import { Footer } from "../Components/UI_Footer/Footer";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const AppRouter = () => {
-  const { firstName } = useSelector((state) => state.auth);
+  const { uid } = useSelector((state) => state.auth);
 
   return (
     <>
@@ -33,47 +33,41 @@ export const AppRouter = () => {
               exact
               path="/login"
               component={LoginScreen}
-              isAuth={!!firstName}
+              isAuth={!!uid}
             />
 
-            <PublicRoute
-              exact
-              path="/register"
-              component={RegisterScreen}
-              isAuth={!!firstName}
-            />
 
-            <PublicRoute
+            <PrivateRoute
               exact
               path="/IntershipRequest"
               component={IntershipRequest}
-              isAuth={!!firstName}
+              isAuth={!!uid}
             />
 
-            <PublicRoute
+            <PrivateRoute
               exact
               path="/"
               component={MyProfile}
-              isAuth={!!firstName}
+              isAuth={!!uid}
             />
 
-            <PublicRoute
+            <PrivateRoute
               exact
               path="/CreatesInterships"
               component={CreatesInterships}
-              isAuth={!!firstName}
+              isAuth={!!uid}
             />
-            <PublicRoute
+            <PrivateRoute
               exact
               path="/NewIntership"
               component={NewIntership}
-              isAuth={!!firstName}
+              isAuth={!!uid}
             />
-            <PublicRoute
+            <PrivateRoute
               exact
               path="/EditIntership/:IdIntership"
               component={FullIntership}
-              isAuth={!!firstName}
+              isAuth={!!uid}
             />
 
             <Route exact path="/error404" component={Error404} />
