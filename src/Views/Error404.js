@@ -23,7 +23,7 @@ export const Error404 = () => {
           La página que estás buscando no existe o se ha movido.
           </p>
         </div>
-        <Link to="/">
+        <Link to="/Login">
           <button className="font-Poppins py-3 px-6 text-white bg-BlueSocial border-blue-500 border-b-4 inline-flex items-center rounded">
             Regresar al Login
           </button>

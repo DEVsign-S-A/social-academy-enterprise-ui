@@ -148,6 +148,26 @@
     background-color: #DB255D;
   }
   
+
+  .sign-btn-social {
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    transition: 0.3s;
+    font-weight: 500;
+  }
+  
+  .sign-btn-social:hover {
+    background-color: #24345F;
+  }
+  
   .text {
     color: #bbb;
     font-size: 0.7rem;

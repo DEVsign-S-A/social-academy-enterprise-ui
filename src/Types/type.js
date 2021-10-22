@@ -1,5 +1,5 @@
 export const types = {
-  login: "[Auth] Login",
+  authLogin: "[Auth] Login",
   logout: "[Auth] Logout",
   recoveryPass: "[Auth] Recovery Password",
   cleanRecoveryPass: "[Auth] Clean Recovery Password",

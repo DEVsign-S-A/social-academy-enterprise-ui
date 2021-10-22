@@ -63,6 +63,7 @@ const handleSubmit = (e) => {
 
   e.preventDefault();
 
+
   
 }
 
@@ -78,7 +79,7 @@ const handleSubmit = (e) => {
             <div className="forms-wrap">
               <form
                 action="index.html"
-                autocomplete="off"
+                autoComplete="off"
                 className="sign-in-form"
                 id="form"
                 onSubmit={handleSubmit}
@@ -105,11 +106,12 @@ const handleSubmit = (e) => {
                   <div className="input-wrap">
                     <input
                       type="email"
-                      minlength="4"
+                      minLength="4"
                       name='email'
                       className="input-field"
-                      autocomplete="off"
+                      autoComplete="off"
                       required
+                      value={email}
                       placeholder="email"
                       onChange={handleInputChange}
                     />
@@ -119,10 +121,11 @@ const handleSubmit = (e) => {
                     <input
                       type="password"
                       name="password"
-                      minlength="4"
+                      minLength="4"
                       className="input-field"
-                      autocomplete="off"
+                      autoComplete="off"
                       required
+                      value={password}
                       placeholder="Contraseña"
                       onChange={handleInputChange}
                     />

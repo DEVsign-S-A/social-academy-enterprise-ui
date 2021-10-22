@@ -3,93 +3,133 @@ import "../Components/UI_Login/style.css";
 import { SocialIconsRegister } from "../Components/UI_Login/SocialIconsRegister";
 import { useDispatch, useSelector } from "react-redux";
 import { setToggleForm } from "../Redux/Actions/uiAction";
-import build from "../Assets/UI_Login/buil.svg";
+import { useForm } from "../Hook/useForm";
+import Swal from "sweetalert2";
+import { startRegister } from "../Redux/Actions/authAction";
 
-const RegisterScreen = ({ props }) => {
-  const { toggleForm } = useSelector((state) => state.ui);
+const RegisterScreen = () => {
+	const { toggleForm } = useSelector((state) => state.ui);
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const handleToggleForm = () => {
-    dispatch(setToggleForm(!toggleForm));
-  };
+	const handleToggleForm = () => {
+		dispatch(setToggleForm(!toggleForm));
+	};
 
-  return (
-    <>
-      <form
-        action="index.html"
-        id="form"
-        autocomplete="off"
-        className="sign-up-form"
-      >
-        <div className="flex">
-          <img
-            src='https://res.cloudinary.com/socialacademy/image/upload/v1633466520/Social%20Academy%20Image/icons%20General/BLUEACADEM_Y_1_lj0ltd.png'
-            alt="sociallog"
-            className="w-10/12"
-          />
-        </div>
+	const initialForm = {
+		name: "",
+		email: "",
+		password: "",
+		password2: "",
+	};
 
-        <div className="heading">
-          <h2>Empezemos</h2>
-          <h6>¿Ya tienes una cuenta?</h6>
-          <p className="toggle" onClick={handleToggleForm}>
-            Inicia Sesión
-          </p>
-        </div>
+	const [formValues, handleInputChange] = useForm(initialForm);
 
-        <div className="actual-form">
-          <div className="input-wrap">
-            <input
-              type="text"
-              minlength="4"
-              className="input-field"
-              autocomplete="off"
-              required
-              placeholder="Nombre"
-            />
-          </div>
+	const { name, email, password, password2 } = formValues;
 
-          <div className="input-wrap">
-            <input
-              type="email"
-              className="input-field"
-              autocomplete="off"
-              required
-              placeholder="Email"
-            />
-          </div>
+	const handleSubmit = (e) => {
+		e.preventDefault();
 
-          <div className="input-wrap">
-            <input
-              type="password"
-              minlength="4"
-              className="input-field"
-              autocomplete="off"
-              required
-              placeholder="Contraseña"
-            />
-          </div>
-          <div className="input-wrap">
-            <input
-              type="password"
-              minlength="4"
-              className="input-field"
-              autocomplete="off"
-              required
-              placeholder="Repita su contraseña"
-            />
-          </div>
+    if(password !== password2){
+      Swal.fire("Error", "Coloque correctamente la contraseña ya que estas no coinciden", 'error')
+      return;
+    }
+    dispatch(startRegister(name, email, password));
+	};
 
-          <input type="submit" value="Resgistrate" className="sign-btn" />
+	return (
+		<>
+			<form
+				action="index.html"
+				id="form"
+				autoComplete="off"
+				className="sign-up-form"
+				onSubmit={handleSubmit}
+			>
+				<div className="flex">
+					<img
+						src="https://res.cloudinary.com/socialacademy/image/upload/v1633466520/Social%20Academy%20Image/icons%20General/BLUEACADEM_Y_1_lj0ltd.png"
+						alt="sociallog"
+						className="w-10/12"
+					/>
+				</div>
 
-          <p className="text">O Registrate Con alguna de estas plataformas</p>
+				<div className="heading">
+					<h2>Empezemos</h2>
+					<h6>¿Ya tienes una cuenta?</h6>
+					<p className="toggle" onClick={handleToggleForm}>
+						Inicia Sesión
+					</p>
+				</div>
 
-          <SocialIconsRegister />
-        </div>
-      </form>
-    </>
-  );
+				<div className="actual-form">
+					<div className="input-wrap">
+						<input
+							type="text"
+							minLength="4"
+							className="input-field"
+							autoComplete="off"
+							required
+							placeholder="Nombre"
+							name="name"
+							id="name"
+							value={name}
+							onChange={handleInputChange}
+						/>
+					</div>
+
+					<div className="input-wrap">
+						<input
+							type="email"
+							id="email"
+							name="email"
+							value={email}
+							className="input-field"
+							autoComplete="off"
+							required
+							placeholder="Email"
+							onChange={handleInputChange}
+						/>
+					</div>
+
+					<div className="input-wrap">
+						<input
+							type="password"
+							name="password"
+							id="password"
+							value={password}
+							minLength="4"
+							className="input-field"
+							autoComplete="off"
+							required
+							placeholder="Contraseña"
+							onChange={handleInputChange}
+						/>
+					</div>
+					<div className="input-wrap">
+						<input
+							type="password"
+							minLength="4"
+							name="password2"
+							id="password2"
+							value={password2}
+							className="input-field"
+							autoComplete="off"
+							required
+							placeholder="Repita su contraseña"
+							onChange={handleInputChange}
+						/>
+					</div>
+
+					<input type="submit" value="Resgistrate" className="sign-btn" />
+
+					<p className="text">O Registrate Con alguna de estas plataformas</p>
+
+					<SocialIconsRegister />
+				</div>
+			</form>
+		</>
+	);
 };
 
 export default RegisterScreen;

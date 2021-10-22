@@ -1,27 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-// import { PrivateRoute } from "./PrivateRoute";
-import { PublicRoute } from "./PublicRoute";
+// import { Route } from "./Route";
 import LoginScreen from "../Views/LoginScreen";
 import MyProfile from "../Views/MyProfile";
 import IntershipRequest from "../Views/IntershipRequest";
 import CreatesInterships from "../Views/CreatesInterships";
 import NewIntership from "../Views/NewIntership";
-import { Error404 } from "../Views/Error404";
 import { FullIntership } from "../Components/Interships/FullIntership";
 import { Footer } from "../Components/UI_Footer/Footer";
+import { PublicRoute } from "./PublicRoute";
+import { useSelector } from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
 
 export const AppRouter = () => {
-  const { uid } = useSelector((state) => state.auth);
-
+  
+const {uid} = useSelector((state) => state.auth);
   return (
     <>
       <Router>
@@ -31,7 +30,7 @@ export const AppRouter = () => {
 
             <PublicRoute
               exact
-              path="/login"
+              path="/Login"
               component={LoginScreen}
               isAuth={!!uid}
             />
@@ -42,6 +41,7 @@ export const AppRouter = () => {
               path="/IntershipRequest"
               component={IntershipRequest}
               isAuth={!!uid}
+
             />
 
             <PrivateRoute
@@ -49,6 +49,7 @@ export const AppRouter = () => {
               path="/"
               component={MyProfile}
               isAuth={!!uid}
+
             />
 
             <PrivateRoute
@@ -56,24 +57,23 @@ export const AppRouter = () => {
               path="/CreatesInterships"
               component={CreatesInterships}
               isAuth={!!uid}
+
             />
             <PrivateRoute
               exact
               path="/NewIntership"
               component={NewIntership}
               isAuth={!!uid}
+
             />
             <PrivateRoute
               exact
               path="/EditIntership/:IdIntership"
               component={FullIntership}
               isAuth={!!uid}
+
             />
-
-            <Route exact path="/error404" component={Error404} />
-
-            {/* -------------------Rutas Privadas-------------------*/}
-            <Redirect to="/error404" />
+            
           </Switch>
         </div>
       </Router>
