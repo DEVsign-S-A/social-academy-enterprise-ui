@@ -5,6 +5,7 @@ import { Sidebar } from "../Components/sidebar/Sidebar";
 import { Header } from "../Components/Header/Header";
 //image
 import back from "../Assets/UI_Forum/Arrow-Left.svg";
+import { useForm } from "../Hook/useForm";
 
 const NewIntership = () => {
 	const history = useHistory();
@@ -12,6 +13,46 @@ const NewIntership = () => {
 
 	const handleBack = () => {
 		history.push("/CreatesInterships");
+	};
+
+	const [formValues, handleInputChange] = useForm({
+		titulo: "",
+		descBreve: "",
+		descLarga: "",
+		skills: "",
+		educacion: "",
+		carreras: "",
+		puesto: "",
+		jornada: "",
+		salario: "",
+	});
+
+	const {
+		titulo,
+		descBreve,
+		descLarga,
+		skills,
+		educacion,
+		carreras,
+		puesto,
+		jornada,
+		salario,
+	} = formValues;
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		console.log(
+			titulo,
+			descBreve,
+			descLarga,
+			skills,
+			educacion,
+			carreras,
+			puesto,
+			jornada,
+			salario
+		);
 	};
 
 	return (
@@ -46,21 +87,22 @@ const NewIntership = () => {
 					</div>
 
 					<div className="rounded-lg bg-gray-100 mt-10 mx-6 pb-8 shadow-xl ring-1 ring-gray-300">
-						<form
-						// onSubmit={}
-						>
+						<form onSubmit={handleSubmit}>
 							<div className="my-2 py-2">
 								<p className="text-gray-600 font-Poppins font-medium text-lg p-5">
 									Título
 								</p>
 								<p className="text-gray-400 font-Poppins text-2s font-light ml-6 pb-2">
-									Se específico y puntual por favor, que no exeda los 100
-									caracteres
+									Se específico y puntual por favor (Maximo 100 caracteres)
 								</p>
 								<input
-									required
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+									required
+									name="titulo"
+									value={titulo}
+									onChange={handleInputChange}
 									type="text"
+									maxLength={100}
 								/>
 							</div>
 							<div className="my-2 py-2">
@@ -70,13 +112,17 @@ const NewIntership = () => {
 								<div className="flex justify-between">
 									<p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
 										Se breve y expresa en pocas palabras lo que deseas
-										transmitir
+										transmitir (Maximo 350 caracteres)
 									</p>
 								</div>
 
 								<textarea
-									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-24 resize-none"
+									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-18 resize-none"
 									required
+									name="descBreve"
+									value={descBreve}
+									onChange={handleInputChange}
+									maxLength={350}
 								></textarea>
 							</div>
 							<div className="my-2 py-2">
@@ -92,6 +138,9 @@ const NewIntership = () => {
 								<textarea
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-36 resize-none"
 									required
+									name="descLarga"
+									value={descLarga}
+									onChange={handleInputChange}
 								></textarea>
 							</div>
 							<div className="my-2 py-2">
@@ -107,6 +156,9 @@ const NewIntership = () => {
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 									type="text"
 									placeholder="Donimino de Office 2019, Excel Avanzado, etc."
+									name="skills"
+									value={skills}
+									onChange={handleInputChange}
 								/>
 							</div>
 							<div className="my-2 py-2">
@@ -121,6 +173,9 @@ const NewIntership = () => {
 									required
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 									type="text"
+									name="educacion"
+									value={educacion}
+									onChange={handleInputChange}
 									placeholder="Donimino de Office 2019, Excel Avanzado, etc."
 								/>
 							</div>
@@ -129,12 +184,17 @@ const NewIntership = () => {
 									Puesto de Trabajo
 								</p>
 								<p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
-									Coloca el puesto de trabajo en concreto
+									Coloca el puesto de trabajo en concreto (Maximo 100
+									caracteres)
 								</p>
 								<input
 									required
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 									type="text"
+									name="puesto"
+									value={puesto}
+									maxLength={100}
+									onChange={handleInputChange}
 								/>
 							</div>
 							<div className="my-2 py-2">
@@ -150,6 +210,9 @@ const NewIntership = () => {
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 									type="text"
 									placeholder="Comunicación, Mercadotecnia, Adiministración de empresas, etc."
+									name="carreras"
+									value={carreras}
+									onChange={handleInputChange}
 								/>
 							</div>
 							<div className="my-2 py-2">
@@ -158,10 +221,15 @@ const NewIntership = () => {
 								</p>
 								<p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
 									Coloca la jornada laboral a la cual se sometera el pasante
+									(Maximo 100 caracteres)
 								</p>
 								<input
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 									type="text"
+									name="jornada"
+									value={jornada}
+									maxLength={100}
+									onChange={handleInputChange}
 								/>
 							</div>
 							<div className="my-2 py-2">
@@ -174,12 +242,16 @@ const NewIntership = () => {
 								<input
 									className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 									type="text"
+									name="salario"
+									value={salario}
+									onChange={handleInputChange}
 								/>
 							</div>
 							<input
 								type="submit"
 								className="py-3 px-3 rounded-lg text-center bg-BlueSocial shadow-xl m-5 cursor-pointer font-Poppins font-medium text-white"
 								value="Guardar"
+								onClick={handleSubmit}
 							/>
 						</form>
 					</div>
