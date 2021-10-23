@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../Hook/useForm";
-import { startNewInfo } from "../../Redux/Actions/bussinesInfo";
+import { startEditInfo } from "../../Redux/Actions/bussinesInfo";
 
-export const PymeInfo = () => {
+export const PymeInfoEdit = () => {
 	const { displayName, UserData } = useSelector((state) => state.auth);
 	const { providerId, profile } = UserData;
 	let photo;
@@ -19,21 +19,24 @@ export const PymeInfo = () => {
 	}
 
 
+	const { infoBussines } = useSelector((state) => state.bussines);
+
+	const { Celular, Telefono, SectorComercial: SE,} = infoBussines[0];
+
 	const dispatch = useDispatch();
 
 	const [formValues, handleInputChange] = useForm({
 		CompanyName: displayName,
-		SectorComercial: "",
-		Phone: "",
-		Cellphone: "",
+		SectorComercial: SE,
+		Phone: Telefono,
+		Cellphone: Celular,
 		correo: correoElectronico,
 	});
 	const { CompanyName, SectorComercial, Phone, Cellphone, correo } = formValues;
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		
-		dispatch(startNewInfo(CompanyName, SectorComercial, Phone, Cellphone, correo));
+		dispatch(startEditInfo(CompanyName, SectorComercial, Phone, Cellphone, correo));
 		// console.log(CompanyName, SectorComercial, Phone, Cellphone, correo);
 	};
 

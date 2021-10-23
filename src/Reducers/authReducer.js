@@ -17,7 +17,6 @@ export const authReducer = (state = initalState, action) => {
 				checking: false,
 			};
 		case types.logout:
-			console.log("redux log out");
 			return {
 				checking: true,
 			};

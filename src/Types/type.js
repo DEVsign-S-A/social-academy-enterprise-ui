@@ -8,4 +8,13 @@ export const types = {
   toggleSidebar: "[UI] Toggle SideBar",
   toggleForm: "[UI] Toggle Form Auth",
   itemSelect: "[UI] Items Select",
+
+
+  addInfo: "[Bussines] Add Info for Bussines",
+  loadInfo: "[Bussines] Load Info for Bussines",
+  addMoreInfo: "[Bussines] Add More Info for Bussines",
+  addFileImg: "[Bussines] Add image for Bussines",
+
+  
+
 };

@@ -1,33 +1,39 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../Hook/useForm";
-import { startMoreinfo } from "../../Redux/Actions/bussinesInfo";
-import { PymeInfoEdit } from "../UI_PymeProfile_Edit/PymeInfoEdit";
-import { PymeInfo } from "./PymeInfo";
+import { startEditMoreInfo } from "../../Redux/Actions/bussinesInfo";
+import { PymeInfo } from "../UI_PymeProfile/PymeInfo";
+import { PymeInfoEdit } from "./PymeInfoEdit";
 
-export const AboutPyme = () => {
+export const AboutPymeEdit = () => {
+	
 	const dispatch = useDispatch();
 
+
 	const { infoBussines } = useSelector((state) => state.bussines);
-
+	
 	const { Date } = infoBussines[0];
-
+	
+	const { Direccion, TipoCompannia, DatosLaborales, Descripcion, Extras} = infoBussines[1];
+	
 	const [formValues, handleInputChange] = useForm({
-		info: "",
-		Direction: "",
-		TypeCompany: "",
-		masinfo: "",
-		extras: "",
+		info: Descripcion,
+		Direction: Direccion,
+		TypeCompany: TipoCompannia,
+		masinfo: DatosLaborales,
+		extras: Extras,
 	});
 	const { info, Direction, TypeCompany, masinfo, extras } = formValues;
+	
 
+	
 	const handleSubmit = () => {
-		dispatch(startMoreinfo(info, Direction, TypeCompany, masinfo, extras));
+		dispatch(startEditMoreInfo(info, Direction, TypeCompany, masinfo, extras));
 	};
 
 	return (
 		<div className="flex flex-row ProfileScreen">
-			{Date ? <PymeInfoEdit /> : <PymeInfo /> }
+		{Date ? <PymeInfoEdit /> : <PymeInfo /> }
 
 			<div className="flex flex-col justify-center AboutUser">
 				<div className="Bio ContenedoresPerfil">
@@ -61,7 +67,7 @@ export const AboutPyme = () => {
 						<input
 							required={true}
 							value={TypeCompany}
-							name="TypeCompany"
+							nae="TypeCompany"
 							onChange={handleInputChange}
 							className="mx-8 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 							type="text"
@@ -91,11 +97,11 @@ export const AboutPyme = () => {
 					></textarea>
 				</div>
 				<input
-					type="submit"
-					className="py-3 px-3 rounded-lg text-center bg-BlueSocial shadow-md m-5 cursor-pointer font-Poppins font-medium text-white"
-					value="Guardar"
-					onClick={handleSubmit}
-				/>
+						type="submit"
+						className="py-3 px-3 rounded-lg text-center bg-BlueSocial shadow-md m-5 cursor-pointer font-Poppins font-medium text-white"
+						value="Guardar"
+						onClick={handleSubmit}
+					/>
 			</div>
 		</div>
 	);

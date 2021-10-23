@@ -13,8 +13,11 @@ export const Footer = () => {
         <footer>
             <img
             className = "footer__Logo"
-            src = {`./assets/Logos/LogoLetrasBlancas.png`}
-            alt = "Social Academy"/>
+            src = 'https://res.cloudinary.com/socialacademy/image/upload/v1635031416/Social%20Academy%20Image/icons%20General/WHITEACADEM_Y_1_te35ot.png'
+            alt = "Social Academy"
+            
+            />
+            
             <div className = "SocialBar flex-row">
                 {
                     socialMedia.map((media, index) =>(

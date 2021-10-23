@@ -89,3 +89,8 @@ export const login = (uid, displayName, UserProfile) => {
 		},
 	};
 };
+
+export const startLogout = () =>({
+    type: types.logout,
+    
+})

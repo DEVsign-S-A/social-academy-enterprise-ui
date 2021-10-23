@@ -8,7 +8,6 @@ import {
 
 // import { Route } from "./Route";
 import LoginScreen from "../Views/LoginScreen";
-import MyProfile from "../Views/MyProfile";
 import IntershipRequest from "../Views/IntershipRequest";
 import CreatesInterships from "../Views/CreatesInterships";
 import NewIntership from "../Views/NewIntership";
@@ -17,6 +16,8 @@ import { Footer } from "../Components/UI_Footer/Footer";
 import { PublicRoute } from "./PublicRoute";
 import { useSelector } from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
+import MyProfileView from "../Views/MyProfileView";
+import MyProfile from "../Views/MyProfile";
 
 export const AppRouter = () => {
   
@@ -47,9 +48,15 @@ const {uid} = useSelector((state) => state.auth);
             <PrivateRoute
               exact
               path="/"
+              component={MyProfileView}
+              isAuth={!!uid}
+            />
+
+              <PrivateRoute
+              exact
+              path="/Edit/Profile"
               component={MyProfile}
               isAuth={!!uid}
-
             />
 
             <PrivateRoute

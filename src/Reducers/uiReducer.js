@@ -2,7 +2,7 @@ import { types } from "../Types/type";
 
 const initialState = {
     showSidebar: false,
-    toggleForm: true,
+    toggleForm: false,
     itemsSidebar: [
         {
             id: "1",

@@ -5,3 +5,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*Oculta el Scroll del overflow-y-auto*/
+::-webkit-scrollbar {
+    display: none;
+}
+
+/*Oculta las flechas del input type number en el input*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+} 
