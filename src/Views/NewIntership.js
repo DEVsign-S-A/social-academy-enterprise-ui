@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { useSelector, useDispatch } from "react-redux";
 import { Sidebar } from "../Components/sidebar/Sidebar";
 import { Header } from "../Components/Header/Header";
+import { SaveNewIntership } from "../Redux/Actions/intershipsActions";
 //image
 import back from "../Assets/UI_Forum/Arrow-Left.svg";
 import { useForm } from "../Hook/useForm";
-import Swal from "sweetalert2";
 
 const NewIntership = () => {
   const history = useHistory();
+
   const { showSidebar } = useSelector((state) => state.ui);
+
+  const dispatch = useDispatch();
 
   const handleBack = () => {
     history.push("/CreatesInterships");
@@ -25,19 +29,10 @@ const NewIntership = () => {
     salario: "",
   });
 
-  const {
-    titulo,
-    descBreve,
-    descLarga,
-    puesto,
-    jornada,
-    salario,
-  } = formValues;
+  const { titulo, descBreve, descLarga, puesto, jornada, salario } = formValues;
 
   /*****Otra Opcion */
-  const [inputSkills, setInputSkills] = useState([
-    { skill: "" },
-  ]);
+  const [inputSkills, setInputSkills] = useState([{ skill: "" }]);
 
   const handleChanges = (index, event) => {
     event.preventDefault();
@@ -53,8 +48,12 @@ const NewIntership = () => {
 
   const handleRemoveSkill = (index, event) => {
     event.preventDefault();
-    if(inputSkills.length <= 1){
-      Swal.fire("Error", "Debe de incluir al menos un parametro en relacion a las habilidades", "warning");
+    if (inputSkills.length <= 1) {
+      Swal.fire(
+        "Error",
+        "Debe de incluir al menos un parametro en relacion a las habilidades",
+        "warning"
+      );
       return;
     }
 
@@ -65,11 +64,8 @@ const NewIntership = () => {
 
   /*****************------------------ */
 
-
   /*****Otra Opcion */
-  const [inputsEducation, setInputsEducation] = useState([
-    { education: "" },
-  ]);
+  const [inputsEducation, setInputsEducation] = useState([{ education: "" }]);
 
   const handleChangesEducation = (index, event) => {
     event.preventDefault();
@@ -85,8 +81,12 @@ const NewIntership = () => {
 
   const handleRemoveEducation = (index, event) => {
     event.preventDefault();
-    if(inputsEducation.length <= 1){
-      Swal.fire("Error", "Debe de incluir al menos un parametro en relacion a la educaion", "warning");
+    if (inputsEducation.length <= 1) {
+      Swal.fire(
+        "Error",
+        "Debe de incluir al menos un parametro en relacion a la educaion",
+        "warning"
+      );
       return;
     }
 
@@ -97,11 +97,8 @@ const NewIntership = () => {
 
   /*****************------------------ */
 
-
   /*****Otra Opcion */
-  const [inputsCareers, setInputsCareers] = useState([
-    { career: "" },
-  ]);
+  const [inputsCareers, setInputsCareers] = useState([{ career: "" }]);
 
   const handleChangesCareers = (index, event) => {
     event.preventDefault();
@@ -117,8 +114,12 @@ const NewIntership = () => {
 
   const handleRemoveCareers = (index, event) => {
     event.preventDefault();
-    if(inputsCareers.length <= 1){
-      Swal.fire("Error", "Debe de incluir al menos una carrera asociada la publicación", "warning");
+    if (inputsCareers.length <= 1) {
+      Swal.fire(
+        "Error",
+        "Debe de incluir al menos una carrera asociada la publicación",
+        "warning"
+      );
       return;
     }
 
@@ -132,18 +133,31 @@ const NewIntership = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(
-      'titulo: ', titulo,
-      'descBreve: ', descBreve,
-      'descLarga: ', descLarga,
-      'inputSkills: ', inputSkills,
-      'inputsEducation: ', inputsEducation,
-      'inputsCareers: ', inputsCareers,
-      'puesto: ', puesto,
-      'jornada: ', jornada,
-      'salario: ', salario,
+    dispatch(
+      SaveNewIntership(
+        titulo,
+        descBreve,
+        descLarga,
+        inputSkills,
+        inputsEducation,
+        inputsCareers,
+        puesto,
+        jornada,
+        salario
+      )
     );
 
+    // console.log(
+    //   'titulo: ', titulo,
+    //   'descBreve: ', descBreve,
+    //   'descLarga: ', descLarga,
+    //   'inputSkills: ', inputSkills,
+    //   'inputsEducation: ', inputsEducation,
+    //   'inputsCareers: ', inputsCareers,
+    //   'puesto: ', puesto,
+    //   'jornada: ', jornada,
+    //   'salario: ', salario,
+    // );
   };
 
   return (
@@ -280,30 +294,30 @@ const NewIntership = () => {
                   requeridos (individualmente)
                 </p>
                 {inputsEducation.map((inputEducation, index) => (
-                    <div key={index} className="flex justify-between">
-                      <input
-                        type="text"
-                        className="mx-8 my-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
-                        placeholder="Diploma de bachiller, 3 año de universidad, etc."
-                        name="education"
-                        label="education"
-                        value={inputEducation.education}
-                        onChange={(event) => handleChangesEducation(index, event)}
-                      />
-                      <button
-                        onClick={(event) => handleRemoveEducation(index, event)}
-                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
-                      >
-                        -
-                      </button>
-                      <button
-                        onClick={(event) => handleAddEducation(event)}
-                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
-                      >
-                        +
-                      </button>
-                    </div>
-                  ))}
+                  <div key={index} className="flex justify-between">
+                    <input
+                      type="text"
+                      className="mx-8 my-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+                      placeholder="Diploma de bachiller, 3 año de universidad, etc."
+                      name="education"
+                      label="education"
+                      value={inputEducation.education}
+                      onChange={(event) => handleChangesEducation(index, event)}
+                    />
+                    <button
+                      onClick={(event) => handleRemoveEducation(index, event)}
+                      className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                    >
+                      -
+                    </button>
+                    <button
+                      onClick={(event) => handleAddEducation(event)}
+                      className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                    >
+                      +
+                    </button>
+                  </div>
+                ))}
               </div>
               <div className="my-2 py-2">
                 <p className="text-gray-600 font-Poppins font-medium text-lg p-5">
@@ -331,32 +345,32 @@ const NewIntership = () => {
                   Anexa las carreras asociadas o relacionadas al puesto en
                   cuestion
                 </p>
-               
+
                 {inputsCareers.map((inputCareers, index) => (
-                    <div key={index} className="flex justify-between">
-                      <input
-                        type="text"
-                        className="mx-8 my-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
-                        placeholder="Comunicación, Mercadotecnia, Adiministración de empresas, etc."
-                        name="career"
-                        label="career"
-                        value={inputCareers.career}
-                        onChange={(event) => handleChangesCareers(index, event)}
-                      />
-                      <button
-                        onClick={(event) => handleRemoveCareers(index, event)}
-                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
-                      >
-                        -
-                      </button>
-                      <button
-                        onClick={(event) => handleAddCareers(event)}
-                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
-                      >
-                        +
-                      </button>
-                    </div>
-                  ))}
+                  <div key={index} className="flex justify-between">
+                    <input
+                      type="text"
+                      className="mx-8 my-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+                      placeholder="Comunicación, Mercadotecnia, Adiministración de empresas, etc."
+                      name="career"
+                      label="career"
+                      value={inputCareers.career}
+                      onChange={(event) => handleChangesCareers(index, event)}
+                    />
+                    <button
+                      onClick={(event) => handleRemoveCareers(index, event)}
+                      className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                    >
+                      -
+                    </button>
+                    <button
+                      onClick={(event) => handleAddCareers(event)}
+                      className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                    >
+                      +
+                    </button>
+                  </div>
+                ))}
               </div>
               <div className="my-2 py-2">
                 <p className="text-gray-600 font-Poppins font-medium text-lg p-5">
@@ -384,7 +398,7 @@ const NewIntership = () => {
                 </p>
                 <input
                   className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
-                  type="text"
+                  type="number"
                   name="salario"
                   value={salario}
                   onChange={handleInputChange}
