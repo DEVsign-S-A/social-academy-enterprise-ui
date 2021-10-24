@@ -12,11 +12,23 @@ export const PymeInfo = () => {
 	const { providerId, profile } = UserData;
 	let photo;
 	let correoElectronico;
+	let  cell= '';
+	let phone = '';
+	let sectCor ='';
 
 	const { infoBussines } = useSelector((state) => state.bussines);
 
-	const { Celular, Telefono, SectorComercial,} = infoBussines[0];
+	if(infoBussines){
+		cell = '';
+		phone = '';
+		sectCor = '';
+	}else{
+		const { Celular, Telefono, SectorComercial,} = infoBussines[0];
+		cell = Celular;
+		phone = Telefono;
+		sectCor = SectorComercial;
 
+	}
 
 	if (providerId === "password") {
 		photo = "https://thispersondoesnotexist.com/image";
@@ -50,7 +62,7 @@ export const PymeInfo = () => {
 						<div>
 							<b>Sector Comercial:</b>
 							<div className="w-11/12 bg-gray-100 r rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-2s">
-								<p>{SectorComercial}</p>
+								<p>{sectCor}</p>
 							</div>
 						</div>
 						<br />
@@ -59,7 +71,7 @@ export const PymeInfo = () => {
 						<div>
 							<b>Telefono:</b>
 							<div className="w-11/12 bg-gray-100  rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-2s">
-								<p>{Telefono}</p>
+								<p>{phone}</p>
 							</div>
 						</div>
 						<br />
@@ -67,7 +79,7 @@ export const PymeInfo = () => {
 						<div>
 							<b>Celular:</b>
 							<div className="w-11/12 bg-gray-100 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-2s">
-								<p>{Celular}</p>
+								<p>{cell}</p>
 							</div>
 						</div>
 						<br />
