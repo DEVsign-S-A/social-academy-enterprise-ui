@@ -6,6 +6,7 @@ import { Header } from "../Components/Header/Header";
 //image
 import back from "../Assets/UI_Forum/Arrow-Left.svg";
 import { useForm } from "../Hook/useForm";
+import Swal from "sweetalert2";
 
 const NewIntership = () => {
   const history = useHistory();
@@ -19,8 +20,6 @@ const NewIntership = () => {
     titulo: "",
     descBreve: "",
     descLarga: "",
-    educacion: "",
-    carreras: "",
     puesto: "",
     jornada: "",
     salario: "",
@@ -30,8 +29,6 @@ const NewIntership = () => {
     titulo,
     descBreve,
     descLarga,
-    educacion,
-    carreras,
     puesto,
     jornada,
     salario,
@@ -56,26 +53,97 @@ const NewIntership = () => {
 
   const handleRemoveSkill = (index, event) => {
     event.preventDefault();
+    if(inputSkills.length <= 1){
+      Swal.fire("Error", "Debe de incluir al menos un parametro en relacion a las habilidades", "warning");
+      return;
+    }
+
     const values = [...inputSkills];
     values.splice(index, 1);
     setInputSkills(values);
   };
 
+  /*****************------------------ */
+
+
+  /*****Otra Opcion */
+  const [inputsEducation, setInputsEducation] = useState([
+    { education: "" },
+  ]);
+
+  const handleChangesEducation = (index, event) => {
+    event.preventDefault();
+    const values = [...inputsEducation];
+    values[index][event.target.name] = event.target.value;
+    setInputsEducation(values);
+  };
+
+  const handleAddEducation = (event) => {
+    event.preventDefault();
+    setInputsEducation([...inputsEducation, { education: "" }]);
+  };
+
+  const handleRemoveEducation = (index, event) => {
+    event.preventDefault();
+    if(inputsEducation.length <= 1){
+      Swal.fire("Error", "Debe de incluir al menos un parametro en relacion a la educaion", "warning");
+      return;
+    }
+
+    const values = [...inputsEducation];
+    values.splice(index, 1);
+    setInputsEducation(values);
+  };
+
+  /*****************------------------ */
+
+
+  /*****Otra Opcion */
+  const [inputsCareers, setInputsCareers] = useState([
+    { career: "" },
+  ]);
+
+  const handleChangesCareers = (index, event) => {
+    event.preventDefault();
+    const values = [...inputsCareers];
+    values[index][event.target.name] = event.target.value;
+    setInputsCareers(values);
+  };
+
+  const handleAddCareers = (event) => {
+    event.preventDefault();
+    setInputsCareers([...inputsCareers, { career: "" }]);
+  };
+
+  const handleRemoveCareers = (index, event) => {
+    event.preventDefault();
+    if(inputsCareers.length <= 1){
+      Swal.fire("Error", "Debe de incluir al menos una carrera asociada la publicación", "warning");
+      return;
+    }
+
+    const values = [...inputsCareers];
+    values.splice(index, 1);
+    setInputsCareers(values);
+  };
+
+  /*****************------------------ */
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     console.log(
-      titulo,
-      descBreve,
-      descLarga,
-      educacion,
-      carreras,
-      puesto,
-      jornada,
-      salario
+      'titulo: ', titulo,
+      'descBreve: ', descBreve,
+      'descLarga: ', descLarga,
+      'inputSkills: ', inputSkills,
+      'inputsEducation: ', inputsEducation,
+      'inputsCareers: ', inputsCareers,
+      'puesto: ', puesto,
+      'jornada: ', jornada,
+      'salario: ', salario,
     );
 
-    console.log("inputSkills", inputSkills);
   };
 
   return (
@@ -173,7 +241,7 @@ const NewIntership = () => {
                   </p>
                   <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
                     Añade las Habilidades necesarias e indispinsables para
-                    desempeñar la labor en cuestion
+                    desempeñar la labor en cuestion (individualmente)
                   </p>
 
                   {inputSkills.map((inputSkill, index) => (
@@ -209,17 +277,33 @@ const NewIntership = () => {
                 </p>
                 <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
                   Agrega los conociemtos en educaion o niveles de esta
-                  requeridos
+                  requeridos (individualmente)
                 </p>
-                <input
-                  required
-                  className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
-                  type="text"
-                  name="educacion"
-                  value={educacion}
-                  onChange={handleInputChange}
-                  placeholder="Donimino de Office 2019, Excel Avanzado, etc."
-                />
+                {inputsEducation.map((inputEducation, index) => (
+                    <div key={index} className="flex justify-between">
+                      <input
+                        type="text"
+                        className="mx-8 my-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+                        placeholder="Diploma de bachiller, 3 año de universidad, etc."
+                        name="education"
+                        label="education"
+                        value={inputEducation.education}
+                        onChange={(event) => handleChangesEducation(index, event)}
+                      />
+                      <button
+                        onClick={(event) => handleRemoveEducation(index, event)}
+                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                      >
+                        -
+                      </button>
+                      <button
+                        onClick={(event) => handleAddEducation(event)}
+                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                      >
+                        +
+                      </button>
+                    </div>
+                  ))}
               </div>
               <div className="my-2 py-2">
                 <p className="text-gray-600 font-Poppins font-medium text-lg p-5">
@@ -247,15 +331,32 @@ const NewIntership = () => {
                   Anexa las carreras asociadas o relacionadas al puesto en
                   cuestion
                 </p>
-                <input
-                  required
-                  className="mx-8 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
-                  type="text"
-                  placeholder="Comunicación, Mercadotecnia, Adiministración de empresas, etc."
-                  name="carreras"
-                  value={carreras}
-                  onChange={handleInputChange}
-                />
+               
+                {inputsCareers.map((inputCareers, index) => (
+                    <div key={index} className="flex justify-between">
+                      <input
+                        type="text"
+                        className="mx-8 my-3 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
+                        placeholder="Comunicación, Mercadotecnia, Adiministración de empresas, etc."
+                        name="career"
+                        label="career"
+                        value={inputCareers.career}
+                        onChange={(event) => handleChangesCareers(index, event)}
+                      />
+                      <button
+                        onClick={(event) => handleRemoveCareers(index, event)}
+                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                      >
+                        -
+                      </button>
+                      <button
+                        onClick={(event) => handleAddCareers(event)}
+                        className="m-2 bg-gray-200 rounded-full py-1 px-4 font-Poppins text-3xl text-gray-800 cursor-pointer"
+                      >
+                        +
+                      </button>
+                    </div>
+                  ))}
               </div>
               <div className="my-2 py-2">
                 <p className="text-gray-600 font-Poppins font-medium text-lg p-5">
