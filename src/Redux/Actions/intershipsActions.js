@@ -14,18 +14,7 @@ export const SaveNewIntership = (
   salario
 ) => {
   return async (dispatch, getState) => {
-    console.log(
-      "dispacth",
-      titulo,
-      descBreve,
-      descLarga,
-      inputSkills,
-      inputsEducation,
-      inputsCareers,
-      puesto,
-      jornada,
-      salario
-    );
+   
     const { uid } = getState().auth;
 
     const newInfo = {
@@ -38,7 +27,7 @@ export const SaveNewIntership = (
       Puesto: puesto,
       Jornada: jornada,
       Salario: salario,
-      Date: new Date().getTime(),
+      Fecha: new Date().getTime(),
     };
 
 

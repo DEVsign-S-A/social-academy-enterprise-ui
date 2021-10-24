@@ -26,7 +26,7 @@ export const startNewInfo = (
 			Correo: correo,
 			Celular: Cellphone,
 			Telefono: Phone,
-			Date: new Date().getTime(),
+			Fecha: new Date().getTime(),
 		};
 
 		const doc = await db
