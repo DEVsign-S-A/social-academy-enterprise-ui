@@ -1,14 +1,13 @@
-import React from "react";
-import More from "../../Assets/UI_Intership/More.svg"
+import React, { useState } from "react";
+import More from "../../Assets/UI_Intership/More.svg";
+import { GirdModalItemsUser } from "./GirdModalItemsUser";
 export const CellsItemsIntership = ({ photo, name, email, telf }) => {
+  const [ItemModal, setItemModal] = useState(false);
   return (
     <>
+      <GirdModalItemsUser ItemModal={ItemModal} setItemModal={setItemModal} />
       <div className="grid grid-cols-0 gap-0 py-4 w-full text-sm ring-1 ring-gray-200 tablet:grid-cols-4 tablet:gap-4">
         <div className="flex justify-around">
-          {/* <input
-            type="checkbox"
-            className="cursor-pointer mt-4 rounded-md text-gray-300 w-5 h-5"
-          /> */}
           <img className="w-8 laptop:w-12" src={photo} alt="icon Person" />
         </div>
 
@@ -30,10 +29,10 @@ export const CellsItemsIntership = ({ photo, name, email, telf }) => {
 
           <div
             className="cursor-pointer"
-            // onClick={() => setItemModal(!ItemModal)}
+            onClick={() => setItemModal(!ItemModal)}
           >
-            <img className="mt-4" src={More} alt="icon Person" /> 
-        </div>
+            <img className="mt-4" src={More} alt="icon Person" />
+          </div>
         </div>
       </div>
     </>
