@@ -12,10 +12,12 @@ const CreatesInterships = () => {
 
 	const dispatch = useDispatch();
 
-	console.log("passs");
 	useEffect(() => {
 		dispatch(startLoadingInterships());
 	}, [dispatch]);
+
+
+	const {interships} = useSelector(state => state.interships);
 
 	return (
 		<>
@@ -38,7 +40,7 @@ const CreatesInterships = () => {
 						<SearchBar />
 
 						<div className="w-11/12 flex flex-row flex-wrap">
-							{dataIntership.map((intership) => (
+							{interships.map((intership) => (
 								<CardsIntership key={intership.IdIntership} {...intership} />
 							))}
 						</div>

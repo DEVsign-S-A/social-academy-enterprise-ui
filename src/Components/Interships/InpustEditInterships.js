@@ -72,7 +72,7 @@ export const InpustEditInterships = ({
                 required={true}
                 className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
                 type="text"
-                value={req}
+                value={req.skill}
               />
               <br />
             </>
@@ -86,7 +86,7 @@ export const InpustEditInterships = ({
               required={true}
               className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
               type="text"
-              value={edu}
+              value={edu.education}
             />
           ))}
         </div>
@@ -110,7 +110,7 @@ export const InpustEditInterships = ({
               required={true}
               className="mx-3 my-2 w-11/12 bg-gray-50 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
               type="text"
-              value={career}
+              value={career.career}
             />
           ))}
           <br />

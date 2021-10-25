@@ -158,6 +158,10 @@ const NewIntership = () => {
     //   'jornada: ', jornada,
     //   'salario: ', salario,
     // );
+
+    setTimeout(() => {
+      history.push('/CreatesInterships');
+    }, 300);
   };
 
   return (

@@ -15,10 +15,14 @@ export const SaveNewIntership = (
 ) => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth;
+		const { infoBussines } = getState().bussines;
+
 		console.log("pase");
 		try {
 			const newIntership = {
-        EnterpriseID: uid,
+        		EnterpriseID: uid,
+				EmpresaInfo: infoBussines[0],
+				EmpresaInfoMore: infoBussines[1],
 				Titulo: titulo,
 				DescripcionBreve: descBreve,
 				DescripcionLarga: descLarga,
