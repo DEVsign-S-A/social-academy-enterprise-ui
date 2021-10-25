@@ -15,6 +15,10 @@ export const types = {
   addMoreInfo: "[Bussines] Add More Info for Bussines",
   addFileImg: "[Bussines] Add image for Bussines",
 
+
+  addNewIntership: "[Intership] Add New Intership",
+  loadIntership: "[Intership] Load Interships",
+
   
 
 };

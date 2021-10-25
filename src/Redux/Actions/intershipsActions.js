@@ -18,6 +18,7 @@ export const SaveNewIntership = (
 		console.log("pase");
 		try {
 			const newIntership = {
+        EnterpriseID: uid,
 				Titulo: titulo,
 				DescripcionBreve: descBreve,
 				DescripcionLarga: descLarga,
@@ -27,14 +28,36 @@ export const SaveNewIntership = (
 				Puesto: puesto,
 				Jornada: jornada,
 				Salario: salario,
-				Fecha: new Date().getTime(),
+				Fecha: new Date().getTime()
 			};
 
-			const doc = await db
-				.collection(`/Enterprises/${uid}/Pasantias/`)
-				.add(newIntership);
+			const doc = await db.collection(`/Pasantias/Publicacion/Data/`).add(newIntership);
+
+			console.log(doc);
 		} catch (e) {
 			Swal.fire("Erorr", e, "warning");
 		}
 	};
 };
+
+export const startLoadingInterships = () => {
+	return async (dispatch) => {
+		const infoBussines = [];
+
+		const infoSnapGeneral = await db.collection(`/Pasantias/Publicacion/Data/`).get();
+
+		infoSnapGeneral.forEach((snap) => {
+			infoBussines.push({
+				id: snap.id,
+				...snap.data(),
+			});
+		});
+
+		dispatch(LoadInterships(infoBussines));
+	};
+};
+
+const LoadInterships = (data) => ({
+	type: types.loadIntership,
+	payload: data,
+});

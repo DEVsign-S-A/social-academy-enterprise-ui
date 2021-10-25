@@ -133,8 +133,6 @@ const NewIntership = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('paso');
-    
     dispatch(
       SaveNewIntership(
         titulo,
