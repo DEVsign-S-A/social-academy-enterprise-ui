@@ -5,7 +5,6 @@ import im01 from "../Assets/UI_Login/imagen01.svg";
 import im02 from "../Assets/UI_Login/imagen02.svg";
 import im03 from "../Assets/UI_Login/imagen03.svg";
 import RegisterScreen from "./RegisterScreen";
-import { SocialIcons } from "../Components/UI_Login/SocialIcons";
 import { setToggleForm } from "../Redux/Actions/uiAction";
 import { useForm } from "../Hook/useForm";
 import { startLoginEmailPassword } from "../Redux/Actions/authAction";
@@ -67,7 +66,7 @@ const LoginScreen = () => {
 				id="main"
 				className={`${toggleForm ? "sign-in-form" : "sign-up-mode"}`}
 			>
-				<div className="box">
+				<div className="box my-20">
 					<div className="inner-box">
 						<div className="forms-wrap">
 							<form
@@ -132,8 +131,6 @@ const LoginScreen = () => {
 									<p className="text">
 										O Inicia Sesión Con alguna de estas plataformas
 									</p>
-									<SocialIcons />
-
 									<p className="text">
 										¿Olvidaste tu contraseña?
 										<p>Consigue ayuda</p> iniciando sesión
