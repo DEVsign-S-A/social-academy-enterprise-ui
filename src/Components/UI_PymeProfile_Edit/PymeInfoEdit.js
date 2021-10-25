@@ -1,9 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { useForm } from "../../Hook/useForm";
 import { startEditInfo } from "../../Redux/Actions/bussinesInfo";
 
 export const PymeInfoEdit = () => {
+
+	const history = useHistory();
+
 	const { displayName, UserData } = useSelector((state) => state.auth);
 	const { providerId, profile } = UserData;
 	let photo;
@@ -36,7 +40,12 @@ export const PymeInfoEdit = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		
 		dispatch(startEditInfo(CompanyName, SectorComercial, Phone, Cellphone, correo));
+		setTimeout(() => {
+			history.push('/')
+		}, 300);
 		// console.log(CompanyName, SectorComercial, Phone, Cellphone, correo);
 	};
 

@@ -8,8 +8,18 @@ import { AboutPymeEdit } from "../Components/UI_PymeProfile_Edit/AboutPymeEdit";
 const MyProfile = () => {
 	const { showSidebar } = useSelector((state) => state.ui);
 	const { infoBussines } = useSelector((state) => state.bussines);
+	let dir;
+	let desc;
 
-	const { Direccion, Descripcion } = infoBussines[1];
+	if(infoBussines === undefined || infoBussines[1] === undefined){
+		dir = '';
+		desc = '';
+	}else{
+		const { Direccion, Descripcion } = infoBussines[1];
+		dir = Direccion;
+		desc = Descripcion;
+
+	}
 
 	return (
 		<>
@@ -32,7 +42,7 @@ const MyProfile = () => {
 					<div className="rounded-lg bg-gray-100 mx-8 pb-8 shadow-md">
 						<br />
 						<div className="">
-							{Direccion || Descripcion ? <AboutPymeEdit /> : <AboutPyme />}
+							{dir === '' || desc === '' ? <AboutPyme /> : <AboutPymeEdit/>}
 						</div>
 					</div>
 				</div>

@@ -7,7 +7,7 @@ export const AboutPyme = () => {
 	let typeC;
 	let desc;
 
-	if(infoBussines){
+	if(infoBussines === undefined || infoBussines[1] === undefined){
 		dir = '';
 		typeC = '';
 		desc = '';

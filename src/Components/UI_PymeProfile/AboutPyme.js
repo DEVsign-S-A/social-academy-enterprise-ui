@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { useForm } from "../../Hook/useForm";
 import { startMoreinfo } from "../../Redux/Actions/bussinesInfo";
 import { PymeInfoEdit } from "../UI_PymeProfile_Edit/PymeInfoEdit";
@@ -7,10 +8,18 @@ import { PymeInfo } from "./PymeInfo";
 
 export const AboutPyme = () => {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const { infoBussines } = useSelector((state) => state.bussines);
 
-	const { Date } = infoBussines[0];
+	let date;
+
+	if (infoBussines === undefined || infoBussines[0] === undefined) {
+		date = "";
+	} else {
+		const { Date } = infoBussines[0];
+		date = Date;
+	}
 
 	const [formValues, handleInputChange] = useForm({
 		info: "",
@@ -23,11 +32,14 @@ export const AboutPyme = () => {
 
 	const handleSubmit = () => {
 		dispatch(startMoreinfo(info, Direction, TypeCompany, masinfo, extras));
+		setTimeout(() => {
+			history.push("/");
+		}, 300);
 	};
 
 	return (
 		<div className="flex flex-row ProfileScreen">
-			{Date ? <PymeInfoEdit /> : <PymeInfo /> }
+			{date === "" ? <PymeInfo /> : <PymeInfoEdit />}
 
 			<div className="flex flex-col justify-center AboutUser">
 				<div className="Bio ContenedoresPerfil">

@@ -13,26 +13,30 @@ export const PymeInfo = () => {
 	let photo;
 	let correoElectronico;
 	let  cell= '';
+	let  name= '';
 	let phone = '';
 	let sectCor ='';
 
 	const { infoBussines } = useSelector((state) => state.bussines);
 
-	if(infoBussines){
+	if(infoBussines === undefined || infoBussines[0] === undefined){
 		cell = '';
 		phone = '';
 		sectCor = '';
+		name = displayName;
+		correoElectronico = '';
 	}else{
-		const { Celular, Telefono, SectorComercial,} = infoBussines[0];
+		const { Celular, Telefono, SectorComercial, Correo, NombreComercial} = infoBussines[0];
 		cell = Celular;
 		phone = Telefono;
 		sectCor = SectorComercial;
+		correoElectronico= Correo;
+		name=NombreComercial;
 
 	}
 
 	if (providerId === "password") {
 		photo = "https://thispersondoesnotexist.com/image";
-		correoElectronico = "";
 	} else {
 		const { picture, email } = profile;
 		photo = picture;
@@ -55,7 +59,7 @@ export const PymeInfo = () => {
 						<div>
 							<b>Nombre Comercial: </b>
 							<div className="w-11/12 bg-gray-100 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s uppercase">
-								<p>{displayName}</p>
+								<p>{name}</p>
 							</div>
 						</div>
 						<br />

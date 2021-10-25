@@ -7,7 +7,7 @@ export const PymeExperience = () => {
 	let ext;
 	let dtl;
 
-	if(infoBussines){
+	if(infoBussines === undefined || infoBussines[1] === undefined){
 		ext = '';
 		dtl = '';
 	}else{
