@@ -4,8 +4,8 @@ import Travel from "../../Assets/UI_Intership/Travel.svg";
 import Contacts from "../../Assets/UI_Intership/Contacts.svg";
 import Time from "../../Assets/UI_Intership/Time.svg";
 import Dollar from "../../Assets/UI_Intership/Dollar [Fill].svg";
-import show from "../../Assets/UI_Intership/Delete.svg";
-import send from "../../Assets/UI_Intership/Pin.svg";
+import show from "../../Assets/UI_Intership/Delete02.svg";
+import send from "../../Assets/UI_Intership/Show02.svg";
 import { Link } from "react-router-dom";
 
 export const CardsIntership = ({

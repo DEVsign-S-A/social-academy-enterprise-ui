@@ -9,6 +9,11 @@
     z-index: 99;
     transition: all 0.3s ease;
 }
+.content-image{
+    background-image: url(../../Assets/00.svg);
+   background-size: contain; 
+   background-repeat: no-repeat;
+}
 
 .sidebar.open {
     width: 250px;
