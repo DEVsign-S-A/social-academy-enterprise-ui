@@ -20,8 +20,7 @@ import MyProfileView from "../Views/MyProfileView";
 import MyProfile from "../Views/MyProfile";
 
 export const AppRouter = () => {
-  
-const {uid} = useSelector((state) => state.auth);
+  const { uid } = useSelector((state) => state.auth);
   return (
     <>
       <Router>
@@ -36,13 +35,11 @@ const {uid} = useSelector((state) => state.auth);
               isAuth={!!uid}
             />
 
-
             <PrivateRoute
               exact
               path="/IntershipRequest"
               component={IntershipRequest}
               isAuth={!!uid}
-
             />
 
             <PrivateRoute
@@ -52,7 +49,7 @@ const {uid} = useSelector((state) => state.auth);
               isAuth={!!uid}
             />
 
-              <PrivateRoute
+            <PrivateRoute
               exact
               path="/Edit/Profile"
               component={MyProfile}
@@ -64,23 +61,26 @@ const {uid} = useSelector((state) => state.auth);
               path="/CreatesInterships"
               component={CreatesInterships}
               isAuth={!!uid}
-
             />
             <PrivateRoute
               exact
               path="/NewIntership"
               component={NewIntership}
               isAuth={!!uid}
-
             />
             <PrivateRoute
               exact
               path="/EditIntership/:IdIntership"
               component={FullIntership}
               isAuth={!!uid}
-
             />
-            
+             <PrivateRoute
+              exact
+              path="/ProfileIntership/:IdIntership"
+              component={FullIntership}
+              isAuth={!!uid}
+            />
+            <Redirect to="/" />
           </Switch>
         </div>
       </Router>
