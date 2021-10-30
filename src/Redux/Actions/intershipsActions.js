@@ -20,9 +20,8 @@ export const SaveNewIntership = (
 		console.log("pase");
 		try {
 			const newIntership = {
-        		EnterpriseID: uid,
-				EmpresaInfo: infoBussines[0],
-				EmpresaInfoMore: infoBussines[1],
+				EnterpriseID: uid,
+				EmpresaInfo: infoBussines,
 				Titulo: titulo,
 				DescripcionBreve: descBreve,
 				DescripcionLarga: descLarga,
@@ -32,10 +31,13 @@ export const SaveNewIntership = (
 				Puesto: puesto,
 				Jornada: jornada,
 				Salario: salario,
-				Fecha: new Date().getTime()
+				solictudesRespustas: [],
+				Fecha: new Date().getTime(),
 			};
 
-			const doc = await db.collection(`/Pasantias/Publicacion/Data/`).add(newIntership);
+			const doc = await db
+				.collection(`/Pasantias/Publicacion/Data/`)
+				.add(newIntership);
 
 			console.log(doc);
 		} catch (e) {
@@ -48,7 +50,9 @@ export const startLoadingInterships = () => {
 	return async (dispatch) => {
 		const infoBussines = [];
 
-		const infoSnapGeneral = await db.collection(`/Pasantias/Publicacion/Data/`).get();
+		const infoSnapGeneral = await db
+			.collection(`/Pasantias/Publicacion/Data/`)
+			.get();
 
 		infoSnapGeneral.forEach((snap) => {
 			infoBussines.push({
@@ -56,6 +60,8 @@ export const startLoadingInterships = () => {
 				...snap.data(),
 			});
 		});
+
+		console.log(infoBussines);
 
 		dispatch(LoadInterships(infoBussines));
 	};

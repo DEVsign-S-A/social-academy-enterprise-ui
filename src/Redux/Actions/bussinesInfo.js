@@ -94,8 +94,6 @@ export const startMoreinfo = (
 	};
 };
 
-
-
 export const startEditMoreInfo = (
 	info,
 	Direction,
@@ -111,10 +109,10 @@ export const startEditMoreInfo = (
 
 			const dataToFirestore = {
 				Descripcion: info,
-			Direccion: Direction,
-			TipoCompannia: TypeCompany,
-			DatosLaborales: masinfo,
-			Extras: extras,
+				Direccion: Direction,
+				TipoCompannia: TypeCompany,
+				DatosLaborales: masinfo,
+				Extras: extras,
 			};
 
 			await db
@@ -125,7 +123,6 @@ export const startEditMoreInfo = (
 		}
 	};
 };
-
 
 export const loadInfo = (uid) => {
 	return async (dispatch) => {

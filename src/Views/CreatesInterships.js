@@ -4,7 +4,6 @@ import { Header } from "../Components/Header/Header";
 import { CardsIntership } from "../Components/Interships/CardsIntership";
 import { SearchBar } from "../Components/Interships/searchBar";
 import { Sidebar } from "../Components/sidebar/Sidebar";
-import { dataIntership } from "../data/dataInternship";
 import { startLoadingInterships } from "../Redux/Actions/intershipsActions";
 
 const CreatesInterships = () => {
@@ -16,8 +15,7 @@ const CreatesInterships = () => {
 		dispatch(startLoadingInterships());
 	}, [dispatch]);
 
-
-	const {interships} = useSelector(state => state.interships);
+	const { interships } = useSelector((state) => state.interships);
 
 	return (
 		<>
@@ -40,9 +38,10 @@ const CreatesInterships = () => {
 						<SearchBar />
 
 						<div className="w-11/12 flex flex-row flex-wrap">
-							{interships.map((intership) => (
-								<CardsIntership key={intership.IdIntership} {...intership} />
-							))}
+							{interships &&
+								interships.map((intership) => (
+									<CardsIntership key={intership.IdIntership} {...intership} />
+								))}
 						</div>
 					</div>
 				</div>
