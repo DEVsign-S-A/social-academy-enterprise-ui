@@ -7,17 +7,16 @@ import { intershipReducer } from "../Reducers/intershipReducer";
 import { uiReducer } from "../Reducers/uiReducer";
 
 const persistConfig = {
-    key: "root",
-    storage,
-    whitelist: ['ui', "auth", "bussines", "interships"]
-  };
-
+  key: "root",
+  storage,
+  whitelist: ["ui", "auth", "bussines", "interships"],
+};
 
 const rootReducer = combineReducers({
-    auth: authReducer,
-    ui: uiReducer,
-    bussines: bussinesReducer,
-    interships: intershipReducer,
-})
+  ui: uiReducer,
+  auth: authReducer,
+  bussines: bussinesReducer,
+  interships: intershipReducer,
+});
 
 export default persistReducer(persistConfig, rootReducer);

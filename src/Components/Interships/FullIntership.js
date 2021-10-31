@@ -52,7 +52,7 @@ export const FullIntership = () => {
             <br />
             <br />
             <div className="flex justify-center items-center my-2">
-              <div className="">
+              <div>
                 <InpustEditInterships
                   Title={Titulo}
                   Job={Puesto}

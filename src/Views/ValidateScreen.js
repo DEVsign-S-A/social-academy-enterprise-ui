@@ -2,7 +2,7 @@ import '../Components/sidebar/style.css'
 import bus from '../Assets/UI_Validate/04.svg'
 const ValidateScreen = () => {
   return (
-    <div className=" select-none overflow-hidden content-image bg-WhiteSocial absolute z-50 w-full min-h-full md:hidden">
+    <div className=" select-none overflow-hidden fixed content-image bg-WhiteSocial z-50 w-full h-screen md:hidden">
       <p
        className='font-Montserrat text-2xl text-gray-700 font-semibold p-5 text-center'
       >
