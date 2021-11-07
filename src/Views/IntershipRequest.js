@@ -4,10 +4,14 @@ import { Header } from "../Components/Header/Header";
 import { CellsIntership } from "../Components/Interships/CellsIntership";
 import { SearchBarRequest } from "../Components/Interships/searchBar copy";
 import { Sidebar } from "../Components/sidebar/Sidebar";
-import { dataIntership} from '../data/dataInternship'
+import { startLoadingInterships } from "../Redux/Actions/intershipsActions";
 const IntershipRequest = () => {
   const { showSidebar } = useSelector((state) => state.ui);
-  // const dispatch = useDispatch();
+  const { interships } = useSelector((state) => state.interships);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(startLoadingInterships());
+  }, [dispatch]);
 
   return (
     <>
@@ -24,10 +28,10 @@ const IntershipRequest = () => {
             }
           </div>
           <div className="rounded-lg bg-gray-100 mt-10 mx-8 pb-8 shadow-lg ring-1 ring-gray-200">
-            <SearchBarRequest/>
-             <div className="flex flex-col justify-center items-center">
-              {dataIntership.map((intership) => (
-                <CellsIntership key={intership.IdIntership} {...intership} />
+            <SearchBarRequest />
+            <div className="flex flex-col justify-center items-center">
+              {interships.map((intership) => (
+                <CellsIntership key={intership.id} {...intership} />
               ))}
             </div>
           </div>

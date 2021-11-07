@@ -15,8 +15,8 @@ const CreatesInterships = () => {
 		dispatch(startLoadingInterships());
 	}, [dispatch]);
 
-	const { interships } = useSelector((state) => state.interships);
-
+	const {interships } = useSelector((state) => state.interships);
+ 
 	return (
 		<>
 			<div className={`home-section ${!showSidebar && "home-sectionOpen"}`}>

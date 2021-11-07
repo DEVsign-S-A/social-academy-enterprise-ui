@@ -157,7 +157,7 @@ export const InpustEditInterships = ({
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Titulo: </strong>
           </p>
-          <p className="text-gray-400 font-Poppins text-2s font-light ml-2 pb-2">
+          <p className="text-gray-400 font-Poppins font-light ml-2 pb-2 text-1.5s">
             Se específico y puntual por favor (Maximo 100 caracteres)
           </p>
           <input
@@ -182,7 +182,7 @@ export const InpustEditInterships = ({
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Descripcion: </strong>
           </p>
-          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
+          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2 text-1.5s">
             Se breve y expresa en pocas palabras lo que deseas transmitir
             (Maximo 350 caracteres)
           </p>
@@ -198,7 +198,7 @@ export const InpustEditInterships = ({
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Detalles Generales: </strong>
           </p>
-          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
+          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2 text-1.5s">
             Descripcion completa y general de la pasantía
           </p>
           <textarea
@@ -214,7 +214,7 @@ export const InpustEditInterships = ({
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Habilidades Requeridas: </strong>
           </p>
-          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
+          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2 text-1.5s">
             Añade las Habilidades necesarias e indispinsables para desempeñar la
             labor en cuestion (individualmente)
           </p>
@@ -247,7 +247,7 @@ export const InpustEditInterships = ({
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Educacion y Experecia: </strong>
           </p>
-          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
+          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2 text-1.5s">
             Agrega los conociemtos en educaion o niveles de esta requeridos
             (individualmente)
           </p>
@@ -282,7 +282,7 @@ export const InpustEditInterships = ({
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Puesto de Trabajo: </strong>
           </p>
-          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
+          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2 text-1.5s">
             Coloca el puesto de trabajo en concreto (Maximo 100 caracteres)
           </p>
           <input
@@ -296,7 +296,7 @@ export const InpustEditInterships = ({
           <br />
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Carreras Asociadas: </strong>
-            <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
+            <p className="text-gray-400 font-Poppins font-light ml-6 pb-2 text-1.5s">
               Anexa las carreras asociadas o relacionadas al puesto en cuestion
             </p>
           </p>
@@ -329,7 +329,7 @@ export const InpustEditInterships = ({
           <p className="font-Poppins text-gray-600 font-medium">
             <strong>Jornada Laboral: </strong>
           </p>
-          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2">
+          <p className="text-gray-400 font-Poppins font-light ml-6 pb-2 text-1.5s">
             Coloca la jornada laboral a la cual se sometera el pasante (Maximo
             100 caracteres)
           </p>

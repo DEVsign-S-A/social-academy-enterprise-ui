@@ -1,11 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-
+import React from "react";
+import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 // import { Route } from "./Route";
 import LoginScreen from "../Views/LoginScreen";
 import IntershipRequest from "../Views/IntershipRequest";
@@ -74,7 +68,7 @@ export const AppRouter = () => {
               component={FullIntership}
               isAuth={!!uid}
             />
-             <PrivateRoute
+            <PrivateRoute
               exact
               path="/ProfileIntership/:IdIntership"
               component={FullIntership}
