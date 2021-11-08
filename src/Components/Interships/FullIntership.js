@@ -62,6 +62,7 @@ export const FullIntership = () => {
                   What_we_want_you_todo={DescripcionLarga}
                   TechnicalRequirements={Habilidades}
                   Education_Experience={Educacion}
+                  IdIntership={IdIntership}
                 />
                 
               </div>

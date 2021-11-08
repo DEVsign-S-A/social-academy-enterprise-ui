@@ -5,6 +5,7 @@ import { authReducer } from "../Reducers/authReducer";
 import { bussinesReducer } from "../Reducers/bussinesReducer";
 import { intershipReducer } from "../Reducers/intershipReducer";
 import { uiReducer } from "../Reducers/uiReducer";
+import { userReducer } from "../Reducers/userReducer";
 
 const persistConfig = {
   key: "root",
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   bussines: bussinesReducer,
   interships: intershipReducer,
+  user: userReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

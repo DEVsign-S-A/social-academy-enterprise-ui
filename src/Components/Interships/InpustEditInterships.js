@@ -8,6 +8,7 @@ import { useForm } from "../../Hook/useForm";
 import { startUpdatingIntership } from "../../Redux/Actions/intershipsActions";
 
 export const InpustEditInterships = ({
+  IdIntership,
   Title: TitleIntership,
   Workday: WorkdayIntership,
   SalaryRange: SalaryRangeIntership,
@@ -138,6 +139,7 @@ export const InpustEditInterships = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(startUpdatingIntership(
+      IdIntership,
       Title, 
       Body, 
       What_we_want_you_todo, 

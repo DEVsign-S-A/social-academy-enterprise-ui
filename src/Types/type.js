@@ -19,6 +19,8 @@ export const types = {
   addNewIntership: "[Intership] Add New Intership",
   loadIntership: "[Intership] Load Interships",
 
-  
+  userExists: "[USER] Exists",
+  userDoesnot: "[USER] Does not exist",
+
 
 };
