@@ -7,8 +7,11 @@ export const CellsItemsIntership = ({
   nombreUsuario,
   correo,
   telefono,
+  uid,
+  id
 }) => {
   const [ItemModal, setItemModal] = useState(false);
+
   return (
     <>
       {nombreUsuario ? (
@@ -16,6 +19,8 @@ export const CellsItemsIntership = ({
           <GirdModalItemsUser
             ItemModal={ItemModal}
             setItemModal={setItemModal}
+            uid={uid}
+            id={id}
           />
           <div className="grid grid-cols-0 gap-0 py-4 w-full text-sm ring-1 ring-gray-200 tablet:grid-cols-4 tablet:gap-4">
             <div className="flex justify-around">

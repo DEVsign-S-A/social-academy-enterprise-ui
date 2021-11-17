@@ -22,7 +22,7 @@ export const CellsIntership = ({
       <GridItemsHeader />
       <div className="flex flex-col justify-center items-center">
         {solictudesRespustas.map((intership) => (
-          <CellsItemsIntership key={intership.iduser} {...intership} />
+          <CellsItemsIntership key={intership.id} {...intership} id={id} />
         ))}
       </div>
     </div>

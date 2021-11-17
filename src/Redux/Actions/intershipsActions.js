@@ -137,6 +137,50 @@ export const getUserInfo = (uid) => {
 	};
 };
 
+
+
+export const startDeleteResponseInterships = (
+	IdIntership,
+	loadInter,
+	indexArray
+) => {
+	return async (dispatch) => {
+		try {
+			let { solictudesRespustas } = loadInter;
+
+			solictudesRespustas.splice(indexArray, 1);
+			// console.log(solictudesRespustas);
+			const usuariosRef = db.collection("Pasantias/Publicacion/Data");
+			await usuariosRef.doc(IdIntership).update({
+				solictudesRespustas: solictudesRespustas,
+			});
+			Swal.fire("Pasantía", "Has Removido al usuario con éxito", "success");
+			dispatch(startLoadingInterships());
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+export const startDeleteInterships = (
+	IdIntership,
+) => {
+	return async (dispatch) => {
+		try {
+
+			// console.log(solictudesRespustas);
+			const usuariosRef = db.collection("Pasantias/Publicacion/Data");
+			await usuariosRef.doc(IdIntership).delete();
+			Swal.fire("Pasantía", "Has Removido la pasantia con éxito", "success");
+			dispatch(startLoadingInterships());
+		} catch (error) {
+			console.log(error);
+		}
+	};
+};
+
+
+
 const LoadInterships = (data) => ({
 	type: types.loadIntership,
 	payload: data,

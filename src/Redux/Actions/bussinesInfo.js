@@ -7,18 +7,15 @@ export const startNewInfo = (
 	SectorComercial,
 	Phone,
 	Cellphone,
-	correo
+	correo,
+	info,
+	Direction,
+	TypeCompany,
+	masinfo,
+	extras
 ) => {
 	return async (dispatch, getState) => {
-		console.log(
-			"dispacth",
-			CompanyName,
-			SectorComercial,
-			Phone,
-			Cellphone,
-			correo
-		);
-		const { uid } = getState().auth;
+			const { uid } = getState().auth;
 
 		const newInfo = {
 			NombreComercial: CompanyName,

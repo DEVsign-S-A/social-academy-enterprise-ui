@@ -12,73 +12,82 @@ import { useSelector } from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
 import MyProfileView from "../Views/MyProfileView";
 import MyProfile from "../Views/MyProfile";
+import ProfileScreen from "../Views/ProfileScreen";
 
 export const AppRouter = () => {
-  const { uid } = useSelector((state) => state.auth);
-  return (
-    <>
-      <Router>
-        <div>
-          <Switch>
-            {/* -------------------Rutas Publicas-------------------*/}
+	const { uid } = useSelector((state) => state.auth);
+	return (
+		<>
+			<Router>
+				<div>
+					<Switch>
+						{/* -------------------Rutas Publicas-------------------*/}
 
-            <PublicRoute
-              exact
-              path="/Login"
-              component={LoginScreen}
-              isAuth={!!uid}
-            />
+						<PublicRoute
+							exact
+							path="/Login"
+							component={LoginScreen}
+							isAuth={!!uid}
+						/>
 
-            <PrivateRoute
-              exact
-              path="/IntershipRequest"
-              component={IntershipRequest}
-              isAuth={!!uid}
-            />
+						<PrivateRoute
+							exact
+							path="/IntershipRequest"
+							component={IntershipRequest}
+							isAuth={!!uid}
+						/>
 
-            <PrivateRoute
-              exact
-              path="/"
-              component={MyProfileView}
-              isAuth={!!uid}
-            />
+						<PrivateRoute
+							exact
+							path="/"
+							component={MyProfileView}
+							isAuth={!!uid}
+						/>
 
-            <PrivateRoute
-              exact
-              path="/Edit/Profile"
-              component={MyProfile}
-              isAuth={!!uid}
-            />
+						<PrivateRoute
+							exact
+							path="/Edit/Profile"
+							component={MyProfile}
+							isAuth={!!uid}
+						/>
 
-            <PrivateRoute
-              exact
-              path="/CreatesInterships"
-              component={CreatesInterships}
-              isAuth={!!uid}
-            />
-            <PrivateRoute
-              exact
-              path="/NewIntership"
-              component={NewIntership}
-              isAuth={!!uid}
-            />
-            <PrivateRoute
-              exact
-              path="/EditIntership/:IdIntership"
-              component={FullIntership}
-              isAuth={!!uid}
-            />
-            <PrivateRoute
-              exact
-              path="/ProfileIntership/:IdIntership"
-              component={FullIntership}
-              isAuth={!!uid}
-            />
-            <Redirect to="/" />
-          </Switch>
-        </div>
-      </Router>
-      <Footer />
-    </>
-  );
+						<PrivateRoute
+							exact
+							path="/CreatesInterships"
+							component={CreatesInterships}
+							isAuth={!!uid}
+						/>
+						<PrivateRoute
+							exact
+							path="/NewIntership"
+							component={NewIntership}
+							isAuth={!!uid}
+						/>
+						<PrivateRoute
+							exact
+							path="/EditIntership/:IdIntership"
+							component={FullIntership}
+							isAuth={!!uid}
+						/>
+						<PrivateRoute
+							exact
+							path="/ProfileIntership/:IdIntership"
+							component={FullIntership}
+							isAuth={!!uid}
+						/>
+
+						<PrivateRoute
+							exact
+							path="/Profile/:userId"
+							component={ProfileScreen}
+							isAuth={!!uid}
+						/>
+
+						<Redirect to="/" />
+					</Switch>
+				</div>
+			</Router>
+			<Footer />
+		</>
+	);
 };
