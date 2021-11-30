@@ -2,44 +2,157 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { useForm } from "../../Hook/useForm";
-import { startMoreinfo } from "../../Redux/Actions/bussinesInfo";
-import { PymeInfoEdit } from "../UI_PymeProfile_Edit/PymeInfoEdit";
-import { PymeInfo } from "./PymeInfo";
+import { startUploadNewPhoto, updateBusinessProfile } from "../../Redux/Actions/bussinesInfo";
 
 export const AboutPyme = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const { infoBussines } = useSelector((state) => state.bussines);
-
-	let date;
-
-	if (infoBussines === undefined || infoBussines[0] === undefined) {
-		date = "";
-	} else {
-		const { Date } = infoBussines[0];
-		date = Date;
-	}
+	const MyUser = useSelector((state) => state.auth);
 
 	const [formValues, handleInputChange] = useForm({
-		info: "",
-		Direction: "",
-		TypeCompany: "",
-		masinfo: "",
-		extras: "",
+		...MyUser
 	});
-	const { info, Direction, TypeCompany, masinfo, extras } = formValues;
+
+	const {nombreEmpresa,
+		email,
+		fotoPerfil,
+		sectorComercial,
+		telefono,
+		celular,
+		descripcion,
+		direccion,
+		tipoCompannia,
+		datosLaborales,
+		extras} = formValues;
+
+	const getUpdatedInfo = () =>{
+		const updatedInfo = {
+			uid: MyUser.uid,
+			fechaCreacion: MyUser.fechaCreacion,
+			nombreEmpresa,
+			email,
+			fotoPerfil,
+			sectorComercial,
+			telefono,
+			celular,
+			descripcion,
+			direccion,
+			tipoCompannia,
+			datosLaborales,
+			extras
+		}
+
+		return updatedInfo;
+	}
 
 	const handleSubmit = () => {
-		dispatch(startMoreinfo(info, Direction, TypeCompany, masinfo, extras));
+		const updatedInfo = getUpdatedInfo();
+		dispatch(updateBusinessProfile(updatedInfo));
 		setTimeout(() => {
 			history.push("/");
 		}, 300);
 	};
 
+	const handleUploadPhoto = (e) =>{
+        e.preventDefault();
+        document.querySelector('#newPhoto').click();
+      }
+
+      const handlePhotoChange = (e) =>{
+        const photo = e.target.files[0];
+        if(photo){
+            dispatch(startUploadNewPhoto(photo, MyUser.uid));
+        }
+      }
+
 	return (
 		<div className="flex flex-row ProfileScreen">
-			{date === "" ? <PymeInfo /> : <PymeInfoEdit />}
+			<div className="flex flex-col justify-center items-center ContenedoresPerfil UserInfo">
+				<div className = "relative">
+					<img src={fotoPerfil} alt="Foto de Perfil" className="UserImage" />
+
+					<button className="absolute transition-all duration-200 opacity-80 bottom-0 right-0 bg-gray-500 text-white font-Poppins p-2 rounded-lg sm:rounded-xl hover:bg-gray-700 m-2"
+                        onClick = {handleUploadPhoto} >
+                            <img className = "uploadPhotoSize"
+                                src = "https://res.cloudinary.com/socialacademy/image/upload/v1635524233/Social%20Academy%20Image/IconosRecursos/camera_1_rwhul2.png" 
+                                alt = "camara" />
+                        </button>
+                        <input id = "newPhoto"
+                            name = "photo"
+                            type = "file"
+                            className = "hidden"
+                            accept = "image/*"
+                            onChange = {handlePhotoChange}
+                        />
+				</div>
+
+				<div className="flex flex-col justify-center items-center">
+					<div className="UserInformation">
+							<div>
+								<b>Nombre Comercial: </b>
+								<input
+									required
+									name="nombreEmpresa"
+									onChange={handleInputChange}
+									value={nombreEmpresa}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
+							<div>
+								<b>Sector Comercial:</b>
+								<input
+									value={sectorComercial}
+									name="sectorComercial"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
+
+							<div>
+								<b>Telefono:</b>
+								<input
+									value={telefono}
+									name="telefono"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
+
+							<div>
+								<b>Celular:</b>
+								<input
+									value={celular}
+									name="celular"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
+
+							<div>
+								<b>Correo:</b>
+								<input
+									required
+									value={email}
+									name="email"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-2 font-Poppins text-gray-700 text-1s"
+									type="text"
+								/>
+							</div>
+							
+					</div>
+				</div>
+
+			</div>
 
 			<div className="flex flex-col justify-center AboutUser">
 				<div className="Bio ContenedoresPerfil">
@@ -47,21 +160,19 @@ export const AboutPyme = () => {
 
 					<textarea
 						className="w-full bg-gray-100 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-96 resize-none"
-						value={info}
-						name="info"
+						value={descripcion}
+						name="descripcion"
 						onChange={handleInputChange}
-						required={true}
 					></textarea>
 				</div>
 
 				<div className="ContenedorHabilidades ContenedoresPerfil">
-					<h1 className="TitulosPerfil">Direction</h1>
+					<h1 className="TitulosPerfil">Dirección</h1>
 					<div className="flex flex-row flex-wrap Abilities">
 						<textarea
 							className="w-full bg-gray-100 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-52 resize-none"
-							value={Direction}
-							name="Direction"
-							required={true}
+							value={direccion}
+							name="direccion"
 							onChange={handleInputChange}
 						></textarea>
 					</div>
@@ -71,9 +182,8 @@ export const AboutPyme = () => {
 					<h1 className="TitulosPerfil">Tipo de Compañia</h1>
 					<div className="flex flex-row flex-wrap Languages">
 						<input
-							required={true}
-							value={TypeCompany}
-							name="TypeCompany"
+							value={tipoCompannia}
+							name="tipoCompannia"
 							onChange={handleInputChange}
 							className="mx-8 w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700"
 							type="text"
@@ -97,8 +207,8 @@ export const AboutPyme = () => {
 					<h1 className="TitulosPerfil">Datos laborales</h1>
 					<textarea
 						className="w-full bg-gray-100 ring-1 ring-gray-300 rounded-xl py-2 outline-none px-5 font-Poppins text-gray-700 h-72 resize-none"
-						value={masinfo}
-						name="masinfo"
+						value={datosLaborales}
+						name="datosLaborales"
 						onChange={handleInputChange}
 					></textarea>
 				</div>

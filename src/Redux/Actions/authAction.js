@@ -5,6 +5,31 @@ import {
 	googleAuthProvider,
 } from "../../firebase/firebase-config";
 import { types } from "../../Types/type";
+import { activeUser, createNewProfile } from "./bussinesInfo";
+
+export const startNewRegisterEmailPasswordName = (email, password, name) =>{
+	return (dispatch) =>{
+		firebase.auth().createUserWithEmailAndPassword(email, password)
+			.then(async ({user}) =>{
+				await user.updateProfile({
+					displayName: name
+				});
+				dispatch(createNewProfile(user.uid, user.displayName, user.email));
+				dispatch(activeUser(user.uid));
+			})
+	}
+}
+
+export const startNewLoginEmailPassword = (email, password) =>{
+	return async (dispatch) =>{
+		return firebase.auth().signInWithEmailAndPassword(email, password)
+			.then(({user}) =>{
+				dispatch(activeUser(user.uid));
+			}).catch(e =>{
+				Swal.fire('Error', e.message, 'error');
+			})
+	}
+}
 
 export const startLoginEmailPassword = (email, pass) => {
 	return (dispatch) => {
@@ -77,15 +102,11 @@ export const startRegister = (name, email, pass) => {
 	};
 };
 
-export const login = (uid, displayName, UserProfile) => {
+export const login = (businessInfo) => {
 	return {
 		type: types.authLogin,
 		payload: {
-			uid,
-			displayName,
-			UserData: {
-				...UserProfile,
-			},
+			...businessInfo
 		},
 	};
 };

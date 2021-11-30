@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToggleForm } from "../Redux/Actions/uiAction";
 import { useForm } from "../Hook/useForm";
 import Swal from "sweetalert2";
-import { startRegister } from "../Redux/Actions/authAction";
+import { startNewRegisterEmailPasswordName } from "../Redux/Actions/authAction";
 import { SocialIcons } from "../Components/UI_Login/SocialIcons";
 
 const RegisterScreen = () => {
@@ -33,12 +33,12 @@ const RegisterScreen = () => {
 		if (password !== password2) {
 			Swal.fire(
 				"Error",
-				"Coloque correctamente la contraseña ya que estas no coinciden",
+				"Coloque correctamente la contraseña, estas no coinciden",
 				"error"
 			);
 			return;
 		}
-		dispatch(startRegister(name, email, password));
+		dispatch(startNewRegisterEmailPasswordName(email, password, name));
 	};
 
 	return (
@@ -59,7 +59,7 @@ const RegisterScreen = () => {
 				</div>
 
 				<div className="heading">
-					<h2>Empezemos</h2>
+					<h2>Empecemos</h2>
 					<h6>¿Ya tienes una cuenta?</h6>
 					<p className="toggle" onClick={handleToggleForm}>
 						Inicia Sesión
@@ -125,7 +125,7 @@ const RegisterScreen = () => {
 						/>
 					</div>
 
-					<input type="submit" value="Resgistrate" className="sign-btn" />
+					<input type="submit" value="Registrate" className="sign-btn" />
 
 					<p className="text">O Registrate Con alguna de estas plataformas</p>
 				</div>
