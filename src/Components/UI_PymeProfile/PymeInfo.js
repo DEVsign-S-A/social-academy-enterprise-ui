@@ -1,15 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 import { useForm } from "../../Hook/useForm";
 
 export const PymeInfo = () => {
-
-	const history = useHistory();
-
+	//const history = useHistory();
 	const MyUser = useSelector((state) => state.auth);
-
-
 	//const dispatch = useDispatch();
 
 	const [formValues, handleInputChange] = useForm({

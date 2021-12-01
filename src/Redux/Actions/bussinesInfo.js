@@ -103,7 +103,7 @@ export const existeUsuario = async (uid) => {
 };
 
 
-export const startNewInfo = (
+/*export const startNewInfo = (
 	CompanyName,
 	SectorComercial,
 	Phone,
@@ -220,7 +220,7 @@ export const startEditMoreInfo = (
 			Swal.fire("Erorr", e, "warning");
 		}
 	};
-};
+};*/
 
 export const loadInfo = (uid) => {
 	return async (dispatch) => {

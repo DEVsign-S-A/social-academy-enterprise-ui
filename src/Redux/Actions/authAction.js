@@ -31,7 +31,7 @@ export const startNewLoginEmailPassword = (email, password) =>{
 	}
 }
 
-export const startLoginEmailPassword = (email, pass) => {
+/*export const startLoginEmailPassword = (email, pass) => {
 	return (dispatch) => {
 		firebase
 			.auth()
@@ -46,9 +46,9 @@ export const startLoginEmailPassword = (email, pass) => {
 				console.log(e);
 			});
 	};
-};
+};*/
 
-export const startLoginWhitGoogle = () => {
+export const startLoginWithGoogle = () => {
 	return async (dispatch) => {
 		firebase
 			.auth()
@@ -67,15 +67,17 @@ export const startLoginWhitGoogle = () => {
 	};
 };
 
-export const startLoginWhitGithub = () => {
+export const startLoginWithGithub = () => {
 	return (dispatch) => {
 		firebase
 			.auth()
 			.signInWithPopup(githubAuthProvider)
-			.then((user) => {
-				dispatch(
-					login(user.user.uid, user.user.displayName, user.additionalUserInfo)
-				);
+			.then(async (user) => {
+				const usuario = await existeUsuario(user.user.uid);
+				if(usuario === false){
+					dispatch(createNewProfile(user.user.uid, user.user.displayName, user.user.email))
+				}
+				dispatch(activeUser(user.user.uid));
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");
@@ -84,7 +86,7 @@ export const startLoginWhitGithub = () => {
 	};
 };
 
-export const startRegister = (name, email, pass) => {
+/*export const startRegister = (name, email, pass) => {
 	return (dispatch) => {
 		firebase
 			.auth()
@@ -101,7 +103,7 @@ export const startRegister = (name, email, pass) => {
 				console.log(e);
 			});
 	};
-};
+};*/
 
 export const login = (businessInfo) => {
 	return {

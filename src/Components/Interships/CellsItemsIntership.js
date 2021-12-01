@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import More from "../../Assets/UI_Intership/More.svg";
-import datas from "../../Assets/UI_Validate/02.svg";
 import { GirdModalItemsUser } from "./GirdModalItemsUser";
 export const CellsItemsIntership = ({
   fotoPerfil,

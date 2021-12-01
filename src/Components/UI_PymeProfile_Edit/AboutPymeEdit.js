@@ -1,15 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
+//import { useHistory } from "react-router";
 import { useForm } from "../../Hook/useForm";
-import { startEditMoreInfo } from "../../Redux/Actions/bussinesInfo";
+//import { startEditMoreInfo } from "../../Redux/Actions/bussinesInfo";
 import { PymeInfo } from "../UI_PymeProfile/PymeInfo";
 import { PymeInfoEdit } from "./PymeInfoEdit";
 
 export const AboutPymeEdit = () => {
 	
-	const dispatch = useDispatch();
-	const history = useHistory();
+	//const dispatch = useDispatch();
+	//const history = useHistory();
 
 	const { infoBussines } = useSelector((state) => state.bussines);
 	
@@ -28,12 +28,12 @@ export const AboutPymeEdit = () => {
 	
 
 	
-	const handleSubmit = () => {
+	/*const handleSubmit = () => {
 		dispatch(startEditMoreInfo(info, Direction, TypeCompany, masinfo, extras));
 		setTimeout(() => {
 			history.push('/')
 		}, 300);
-	};
+	};*/
 
 	return (
 		<div className="flex flex-row ProfileScreen">
@@ -100,12 +100,12 @@ export const AboutPymeEdit = () => {
 						onChange={handleInputChange}
 					></textarea>
 				</div>
-				<input
+				{/*<input
 						type="submit"
 						className="py-3 px-3 rounded-lg text-center bg-BlueSocial shadow-md m-5 cursor-pointer font-Poppins font-medium text-white"
 						value="Guardar"
 						onClick={handleSubmit}
-					/>
+				/>*/}
 			</div>
 		</div>
 	);

@@ -1,16 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { startLoginWhitGithub, startLoginWhitGoogle } from "../../Redux/Actions/authAction";
+import { startLoginWithGithub, startLoginWithGoogle } from "../../Redux/Actions/authAction";
 
 export const SocialIcons = () => {
 	const dispatch = useDispatch();
 	//TODO: Crear el Dispatch
 	const handleGoogleLogin = () => {
-		dispatch(startLoginWhitGoogle());
+		dispatch(startLoginWithGoogle());
 	};
 
 	const handleGithubLogin = () => {
-		dispatch(startLoginWhitGithub());
+		dispatch(startLoginWithGithub());
 	};
 	return (
 		<div className="flex justify-center items-center my-2">
