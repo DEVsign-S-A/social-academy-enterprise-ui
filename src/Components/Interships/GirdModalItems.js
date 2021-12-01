@@ -39,18 +39,19 @@ const history = useHistory();
 						<Grid $grid_modal_items_container>
 							<button
 								className="flex justify-center items-center rounded-md p-2 my-2 hover:bg-gray-200"
-								onClick={handleLogout}
-							>
-								<P $grid_modal_title>Cerrar Sesión</P>
-								<img src={log} alt="log out" className="w-5 mx-2" />
-							</button>
-							<button
-								className="flex justify-center items-center rounded-md p-2 my-2 hover:bg-gray-200"
 								onClick={handleEditProfile}
 							>
 								<P $grid_modal_title>Editar Perfil</P>
 								<img src={edit} alt="Editar Perfil" className="w-5 mx-2" />
 							</button>
+							<button
+								className="flex justify-center items-center rounded-md p-2 my-2 hover:bg-gray-200"
+								onClick={handleLogout}
+							>
+								<P $grid_modal_title>Cerrar Sesión</P>
+								<img src={log} alt="log out" className="w-5 mx-2" />
+							</button>
+							
 						</Grid>
 					</DivModal>
 				</OutsideClickHandler>

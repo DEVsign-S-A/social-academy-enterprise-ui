@@ -39,7 +39,7 @@ export const Grid = tw.div`
 	}
 
 	${props => props.$grid_modal_items_container &&
-		"flex-col mx-3 my-2"
+		"flex-col mx-3 my-2 w-44"
 	}
 `;
 

@@ -13,6 +13,8 @@ const IntershipRequest = () => {
     dispatch(startLoadingInterships());
   }, [dispatch]);
 
+  console.log(interships);
+
   return (
     <>
       <div className={`home-section ${!showSidebar && "home-sectionOpen"}`}>

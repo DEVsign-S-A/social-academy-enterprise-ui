@@ -1,130 +1,99 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 import { useForm } from "../../Hook/useForm";
-import { startNewInfo } from "../../Redux/Actions/bussinesInfo";
 
 export const PymeInfo = () => {
-
-	const history = useHistory();
-
-	const { displayName, UserData } = useSelector((state) => state.auth);
-	const { providerId, profile } = UserData;
-	let photo;
-	let correoElectronico;
-	
-	if(providerId === 'password'){
-		photo = 'https://thispersondoesnotexist.com/image';
-		correoElectronico='';
-	}else{
-		const { picture , email } = profile;
-		photo = picture;
-		correoElectronico = email;
-	}
-
-
-	const dispatch = useDispatch();
+	//const history = useHistory();
+	const MyUser = useSelector((state) => state.auth);
+	//const dispatch = useDispatch();
 
 	const [formValues, handleInputChange] = useForm({
-		CompanyName: displayName,
-		SectorComercial: "",
-		Phone: "",
-		Cellphone: "",
-		correo: correoElectronico,
+		...MyUser
 	});
-	const { CompanyName, SectorComercial, Phone, Cellphone, correo } = formValues;
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		
-		dispatch(startNewInfo(CompanyName, SectorComercial, Phone, Cellphone, correo));
-		setTimeout(() => {
-			history.push('/')
-		}, 300);
-		// console.log(CompanyName, SectorComercial, Phone, Cellphone, correo);
-	};
+	const {nombreEmpresa,
+	email,
+	fotoPerfil,
+	sectorComercial,
+	telefono,
+	celular} = formValues;
+
 
 	return (
-		<div className="flex flex-col justify-center items-center ContenedoresPerfil UserInfo">
+		<>
+			<div className="flex flex-col justify-center items-center ContenedoresPerfil UserInfo">
 	
-			<img src={photo} alt="Foto de Perfil" className="UserImage" />
+				<img src={fotoPerfil} alt="Foto de Perfil" className="UserImage" />
 
-			<div className="flex flex-col justify-center items-center">
-				<div className="UserInformation">
-					<form onSubmit={handleSubmit}>
-						<div>
-							<b>Nombre Comercial: </b>
-							<input
-								required
-								name="CompanyName"
-								onChange={handleInputChange}
-								value={CompanyName}
-								className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
-								type="text"
-							/>
-						</div>
-						<br />
-						<div>
-							<b>Sector Comercial:</b>
-							<input
-								required
-								value={SectorComercial}
-								name="SectorComercial"
-								onChange={handleInputChange}
-								className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
-								type="text"
-							/>
-						</div>
-						<br />
+				<div className="flex flex-col justify-center items-center">
+					
+					<div className="UserInformation">
+						
+							<div>
+								<b>Nombre Comercial: </b>
+								<input
+									required
+									name="nombreEmpresa"
+									onChange={handleInputChange}
+									value={nombreEmpresa}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
+							<div>
+								<b>Sector Comercial:</b>
+								<input
+									required
+									value={sectorComercial}
+									name="sectorComercial"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
 
-						{/* <h4><b>Edad:</b> {annos} años </h4> */}
-						<div>
-							<b>Telefono:</b>
-							<input
-								required
-								value={Phone}
-								name="Phone"
-								onChange={handleInputChange}
-								className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
-								type="text"
-							/>
-						</div>
-						<br />
+							<div>
+								<b>Telefono:</b>
+								<input
+									value={telefono}
+									name="telefono"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
 
-						<div>
-							<b>Celular:</b>
-							<input
-								required={true}
-								value={Cellphone}
-								name="Cellphone"
-								onChange={handleInputChange}
-								className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
-								type="text"
-							/>
-						</div>
-						<br />
+							<div>
+								<b>Celular:</b>
+								<input
+									value={celular}
+									name="celular"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-4 font-Poppins text-gray-700 text-1.5s"
+									type="text"
+								/>
+							</div>
+							<br />
 
-						<div>
-							<b>Correo:</b>
-							<input
-								required
-								value={correo}
-								name="correo"
-								onChange={handleInputChange}
-								className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-2 font-Poppins text-gray-700 text-1s"
-								type="text"
-							/>
-						</div>
-
-						<input
-							type="submit"
-							className="py-3 px-3 rounded-lg text-center bg-BlueSocial shadow-md m-5 cursor-pointer font-Poppins font-medium text-white"
-							value="Guardar"
-							onClick={handleSubmit}
-						/>
-					</form>
+							<div>
+								<b>Correo:</b>
+								<input
+									required
+									value={email}
+									name="email"
+									onChange={handleInputChange}
+									className="w-11/12 bg-gray-100 ring-1 ring-gray-300 rounded-lg py-2 outline-none px-2 font-Poppins text-gray-700 text-1s"
+									type="text"
+								/>
+							</div>
+							
+					</div>
 				</div>
+
 			</div>
-		</div>
+		</>
 	);
 };

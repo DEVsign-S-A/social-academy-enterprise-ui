@@ -7,7 +7,7 @@ import im03 from "../Assets/UI_Login/imagen03.svg";
 import RegisterScreen from "./RegisterScreen";
 import { setToggleForm } from "../Redux/Actions/uiAction";
 import { useForm } from "../Hook/useForm";
-import { startLoginEmailPassword } from "../Redux/Actions/authAction";
+import { startNewLoginEmailPassword } from "../Redux/Actions/authAction";
 const LoginScreen = () => {
 	/**
 	 * Aqui esta una parte que me vale verga si esta en vaniallaJS
@@ -56,8 +56,7 @@ const LoginScreen = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
-		dispatch(startLoginEmailPassword(email, password));
+		dispatch(startNewLoginEmailPassword(email, password));
 	};
 
 	return (

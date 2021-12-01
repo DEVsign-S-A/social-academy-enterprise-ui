@@ -1,8 +1,109 @@
 import Swal from "sweetalert2";
 import { db } from "../../firebase/firebase-config";
 import { types } from "../../Types/type";
+import { fileUpload } from "../../Helpers/fileUpload";
+import { retornaDocumentos } from "../../Helpers/retornaDocumentos";
+import { login } from "./authAction";
 
-export const startNewInfo = (
+export const createNewProfile = (uid, name, email) =>{
+    return async () =>{
+        const newPyme = {
+			uid,
+			nombreEmpresa: name,
+			email,
+			fotoPerfil: 'https://res.cloudinary.com/socialacademy/image/upload/v1635096147/Social%20Academy%20Image/IconosRecursos/AvatarProfile_iudmkb.jpg',
+			sectorComercial: '',
+			telefono: '',
+			celular: '',
+			fechaCreacion: new Date().getTime(),
+			descripcion: '',
+			direccion: '',
+			tipoCompannia: '',
+			datosLaborales: '',
+			extras: ''
+		}
+        try {
+            await db.collection("Enterprises").doc(`${uid}`).set(newPyme);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+
+export const updateBusinessProfile = (pymeInfo) => {
+    return async (dispatch) =>{
+        try {
+            Swal.fire({
+                title: 'Espere',
+                text: 'Actualizando perfil',
+                allowOutsideClick: false,
+                didOpen: ()=>{
+                    Swal.showLoading();
+                }
+            });
+            const {uid} = pymeInfo;
+            const usuariosRef = db.collection("Enterprises");
+            await usuariosRef.doc(uid).set(pymeInfo);
+            dispatch(activeUser(uid));
+            Swal.close();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+export const startUploadNewPhoto = (file, uid) =>{
+    return async (dispatch) =>{
+        Swal.fire({
+            title: 'Espere',
+            text: 'Subiendo foto',
+            allowOutsideClick: false,
+            didOpen: ()=>{
+                Swal.showLoading();
+            }
+        });
+		
+        const photoURL = await fileUpload(file);
+        const usuariosRef = db.collection("Enterprises");
+        await usuariosRef.doc(uid).update({
+            fotoPerfil: photoURL
+        });
+        dispatch(activeUser(uid));
+        Swal.close();
+    }
+}
+
+export const activeUser = (uid) =>{
+	return async (dispatch) =>{
+		try {
+			const usuarioRef = db.collection("Enterprises");
+			const usuarioActivo = await usuarioRef.where("uid", "==", uid).get().then(retornaDocumentos);
+			dispatch(login(usuarioActivo[0]));
+		} catch (error) {
+			console.log(error);
+		}
+	}
+}
+
+export const existeUsuario = async (uid) => {
+	const usuariosRef = db.collection("Enterprises");
+	const usuarios = usuariosRef
+		.where("uid", "==", uid)
+		.get()
+		.then(retornaDocumentos);
+	const existe = await usuarios.then((resolve) => {
+		return resolve;
+	});
+	if (existe.length === 0) {
+		return false;
+	} else if (existe.length > 0) {
+		return true;
+	}
+};
+
+
+/*export const startNewInfo = (
 	CompanyName,
 	SectorComercial,
 	Phone,
@@ -119,7 +220,7 @@ export const startEditMoreInfo = (
 			Swal.fire("Erorr", e, "warning");
 		}
 	};
-};
+};*/
 
 export const loadInfo = (uid) => {
 	return async (dispatch) => {

@@ -15,14 +15,13 @@ export const SaveNewIntership = (
 	salario
 ) => {
 	return async (dispatch, getState) => {
-		const { uid } = getState().auth;
-		const { infoBussines } = getState().bussines;
+		const MyUser = getState().auth;
 
 		console.log("pase");
 		try {
 			const newIntership = {
-				EnterpriseID: uid,
-				EmpresaInfo: infoBussines,
+				EnterpriseID: MyUser.uid,
+				EmpresaInfo: MyUser,
 				Titulo: titulo,
 				DescripcionBreve: descBreve,
 				DescripcionLarga: descLarga,
@@ -40,7 +39,10 @@ export const SaveNewIntership = (
 				.collection(`/Pasantias/Publicacion/Data/`)
 				.add(newIntership);
 
-			console.log(doc);
+			await  db
+				.collection(`/Pasantias/Publicacion/Data/`).doc(doc.id).update({
+					internshipID: doc.id
+				})
 		} catch (e) {
 			Swal.fire("Erorr", e, "warning");
 		}
@@ -48,11 +50,13 @@ export const SaveNewIntership = (
 };
 
 export const startLoadingInterships = () => {
-	return async (dispatch) => {
+	return async (dispatch, getState) => {
+		const {uid} = getState().auth;
 		const infoBussines = [];
 
 		const infoSnapGeneral = await db
 			.collection(`/Pasantias/Publicacion/Data/`)
+			.where("EnterpriseID", "==", uid)
 			.get();
 
 		infoSnapGeneral.forEach((snap) => {
@@ -61,8 +65,6 @@ export const startLoadingInterships = () => {
 				...snap.data(),
 			});
 		});
-
-		console.log(infoBussines);
 
 		dispatch(LoadInterships(infoBussines));
 	};
@@ -100,22 +102,6 @@ export const startUpdatingIntership = (
 			Swal.fire("Erorr", error, "warning");
 		}
 	};
-};
-
-export const existeUsuario = async (uid) => {
-	const usuariosRef = db.collection("UsuarioAcademico");
-	const usuarios = usuariosRef
-		.where("uid", "==", uid)
-		.get()
-		.then(retornaDocumentos);
-	const existe = await usuarios.then((resolve) => {
-		return resolve;
-	});
-	if (existe.length === 0) {
-		return false;
-	} else if (existe.length > 0) {
-		return true;
-	}
 };
 
 export const getUserInfo = (uid) => {
@@ -183,7 +169,7 @@ export const startDeleteInterships = (
 
 const LoadInterships = (data) => ({
 	type: types.loadIntership,
-	payload: data,
+	payload: data
 });
 
 export const userExists = (userInfo) => ({

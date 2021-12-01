@@ -6,7 +6,6 @@ import { AboutPyme } from "../Components/UI_PymeProfileView/AboutPymeView";
 import { PymeExperience } from "../Components/UI_PymeProfileView/pymeExperienceView";
 import { PymeInfo } from "../Components/UI_PymeProfileView/PymeInfoView";
 
-import { pyme } from "../data/DataPyme";
 
 const MyProfileView = () => {
 
@@ -26,12 +25,12 @@ const MyProfileView = () => {
               <Header />
             }
           </div>
-          <div className="rounded-lg bg-gray-100 mx-8 pb-8 shadow-md">
+          <div className="rounded-lg bg-gray-100 mx-4 pb-8 shadow-md">
           <br/>
             <div className="flex flex-row ProfileScreen">
               <PymeInfo />
-              <AboutPyme {...pyme} />
-              <PymeExperience {...pyme} />
+              <AboutPyme />
+              <PymeExperience />
             </div>
           </div>
         </div>

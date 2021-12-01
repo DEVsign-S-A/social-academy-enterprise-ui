@@ -1,12 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import {  useSelector } from "react-redux";
+//import { useHistory } from "react-router";
 import { useForm } from "../../Hook/useForm";
-import { startEditInfo } from "../../Redux/Actions/bussinesInfo";
+//import { startEditInfo } from "../../Redux/Actions/bussinesInfo";
 
 export const PymeInfoEdit = () => {
 
-	const history = useHistory();
+	//const history = useHistory();
 
 	const { displayName, UserData } = useSelector((state) => state.auth);
 	const { providerId, profile } = UserData;
@@ -27,7 +27,7 @@ export const PymeInfoEdit = () => {
 
 	const { Celular, Telefono, SectorComercial: SE,} = infoBussines[0];
 
-	const dispatch = useDispatch();
+	//const dispatch = useDispatch();
 
 	const [formValues, handleInputChange] = useForm({
 		CompanyName: displayName,
@@ -38,7 +38,7 @@ export const PymeInfoEdit = () => {
 	});
 	const { CompanyName, SectorComercial, Phone, Cellphone, correo } = formValues;
 
-	const handleSubmit = (e) => {
+	/*const handleSubmit = (e) => {
 		e.preventDefault();
 
 		
@@ -46,8 +46,8 @@ export const PymeInfoEdit = () => {
 		setTimeout(() => {
 			history.push('/')
 		}, 300);
-		// console.log(CompanyName, SectorComercial, Phone, Cellphone, correo);
-	};
+		console.log(CompanyName, SectorComercial, Phone, Cellphone, correo);
+	};*/
 
 	return (
 		<div className="flex flex-col justify-center items-center ContenedoresPerfil UserInfo">
@@ -56,7 +56,9 @@ export const PymeInfoEdit = () => {
 
 			<div className="flex flex-col justify-center items-center">
 				<div className="UserInformation">
-					<form onSubmit={handleSubmit}>
+					<form 
+					//onSubmit={handleSubmit}
+					>
 						<div>
 							<b>Nombre Comercial: </b>
 							<input
@@ -121,12 +123,12 @@ export const PymeInfoEdit = () => {
 							/>
 						</div>
 
-						<input
+						{/*<input
 							type="submit"
 							className="py-3 px-3 rounded-lg text-center bg-BlueSocial shadow-md m-5 cursor-pointer font-Poppins font-medium text-white"
 							value="Guardar"
 							onClick={handleSubmit}
-						/>
+						/>*/}
 					</form>
 				</div>
 			</div>

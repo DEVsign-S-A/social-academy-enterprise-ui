@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import More from "../../Assets/UI_Intership/More.svg";
-import datas from "../../Assets/UI_Validate/02.svg";
 import { GirdModalItemsUser } from "./GirdModalItemsUser";
 export const CellsItemsIntership = ({
   fotoPerfil,
@@ -14,8 +13,6 @@ export const CellsItemsIntership = ({
 
   return (
     <>
-      {nombreUsuario ? (
-        <>
           <GirdModalItemsUser
             ItemModal={ItemModal}
             setItemModal={setItemModal}
@@ -52,15 +49,6 @@ export const CellsItemsIntership = ({
               </div>
             </div>
           </div>
-        </>
-      ) : (
-        <>
-          <h1 className="mx-3 font-Poppins text-gray-600 text-2xl font-semibold">
-            Esta publicación aun no tiene solicitudes de pasantes
-          </h1>
-          <img src={datas} alt="datas" className="w-64" />
-        </>
-      )}
     </>
   );
 };

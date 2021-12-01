@@ -5,8 +5,33 @@ import {
 	googleAuthProvider,
 } from "../../firebase/firebase-config";
 import { types } from "../../Types/type";
+import { activeUser, createNewProfile, existeUsuario } from "./bussinesInfo";
 
-export const startLoginEmailPassword = (email, pass) => {
+export const startNewRegisterEmailPasswordName = (email, password, name) =>{
+	return (dispatch) =>{
+		firebase.auth().createUserWithEmailAndPassword(email, password)
+			.then(async ({user}) =>{
+				await user.updateProfile({
+					displayName: name
+				});
+				dispatch(createNewProfile(user.uid, user.displayName, user.email));
+				dispatch(activeUser(user.uid));
+			})
+	}
+}
+
+export const startNewLoginEmailPassword = (email, password) =>{
+	return async (dispatch) =>{
+		return firebase.auth().signInWithEmailAndPassword(email, password)
+			.then(({user}) =>{
+				dispatch(activeUser(user.uid));
+			}).catch(e =>{
+				Swal.fire('Error', e.message, 'error');
+			})
+	}
+}
+
+/*export const startLoginEmailPassword = (email, pass) => {
 	return (dispatch) => {
 		firebase
 			.auth()
@@ -21,18 +46,19 @@ export const startLoginEmailPassword = (email, pass) => {
 				console.log(e);
 			});
 	};
-};
+};*/
 
-export const startLoginWhitGoogle = () => {
-	return (dispatch) => {
+export const startLoginWithGoogle = () => {
+	return async (dispatch) => {
 		firebase
 			.auth()
 			.signInWithPopup(googleAuthProvider)
-			.then((user) => {
-				console.log(user);
-				dispatch(
-					login(user.user.uid, user.user.displayName, user.additionalUserInfo)
-				);
+			.then(async (user) => {
+				const usuario = await existeUsuario(user.user.uid);
+				if(usuario === false){
+					dispatch(createNewProfile(user.user.uid, user.user.displayName, user.user.email))
+				}
+				dispatch(activeUser(user.user.uid));
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");
@@ -41,15 +67,17 @@ export const startLoginWhitGoogle = () => {
 	};
 };
 
-export const startLoginWhitGithub = () => {
+export const startLoginWithGithub = () => {
 	return (dispatch) => {
 		firebase
 			.auth()
 			.signInWithPopup(githubAuthProvider)
-			.then((user) => {
-				dispatch(
-					login(user.user.uid, user.user.displayName, user.additionalUserInfo)
-				);
+			.then(async (user) => {
+				const usuario = await existeUsuario(user.user.uid);
+				if(usuario === false){
+					dispatch(createNewProfile(user.user.uid, user.user.displayName, user.user.email))
+				}
+				dispatch(activeUser(user.user.uid));
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");
@@ -58,7 +86,7 @@ export const startLoginWhitGithub = () => {
 	};
 };
 
-export const startRegister = (name, email, pass) => {
+/*export const startRegister = (name, email, pass) => {
 	return (dispatch) => {
 		firebase
 			.auth()
@@ -75,17 +103,13 @@ export const startRegister = (name, email, pass) => {
 				console.log(e);
 			});
 	};
-};
+};*/
 
-export const login = (uid, displayName, UserProfile) => {
+export const login = (businessInfo) => {
 	return {
 		type: types.authLogin,
 		payload: {
-			uid,
-			displayName,
-			UserData: {
-				...UserProfile,
-			},
+			...businessInfo
 		},
 	};
 };
