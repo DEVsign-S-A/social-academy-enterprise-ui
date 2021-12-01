@@ -6,6 +6,8 @@ import { SearchBar } from "../Components/Interships/searchBar";
 import { Sidebar } from "../Components/sidebar/Sidebar";
 import { startLoadingInterships } from "../Redux/Actions/intershipsActions";
 
+import datas from "../Assets/UI_Validate/02.svg";
+
 const CreatesInterships = () => {
 	const { showSidebar } = useSelector((state) => state.ui);
 
@@ -15,7 +17,7 @@ const CreatesInterships = () => {
 		dispatch(startLoadingInterships());
 	}, [dispatch]);
 
-	const {interships } = useSelector((state) => state.interships);
+	const {interships}  = useSelector((state) => state.interships);
  
 	return (
 		<>
@@ -38,10 +40,17 @@ const CreatesInterships = () => {
 						<SearchBar />
 
 						<div className="w-11/12 flex flex-row flex-wrap">
-							{interships &&
-								interships.map((intership) => (
+							{(interships.length !==0)?(interships.map((intership) => (
 									<CardsIntership key={intership.IdIntership} {...intership} />
-								))}
+								))):(<>
+									<div className = "flex flex-col w-full items-center justify-center" >
+										<h1 className="mx-3 font-Poppins text-gray-600 text-2xl font-semibold">
+										Aun no has publicado pasantias
+										</h1>
+										<img src={datas} alt="datas" className="w-80 mt-8 mb-8" />
+									</div>
+								</>)
+							}
 						</div>
 					</div>
 				</div>

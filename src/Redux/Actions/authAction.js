@@ -5,7 +5,7 @@ import {
 	googleAuthProvider,
 } from "../../firebase/firebase-config";
 import { types } from "../../Types/type";
-import { activeUser, createNewProfile } from "./bussinesInfo";
+import { activeUser, createNewProfile, existeUsuario } from "./bussinesInfo";
 
 export const startNewRegisterEmailPasswordName = (email, password, name) =>{
 	return (dispatch) =>{
@@ -49,15 +49,16 @@ export const startLoginEmailPassword = (email, pass) => {
 };
 
 export const startLoginWhitGoogle = () => {
-	return (dispatch) => {
+	return async (dispatch) => {
 		firebase
 			.auth()
 			.signInWithPopup(googleAuthProvider)
-			.then((user) => {
-				console.log(user);
-				dispatch(
-					login(user.user.uid, user.user.displayName, user.additionalUserInfo)
-				);
+			.then(async (user) => {
+				const usuario = await existeUsuario(user.user.uid);
+				if(usuario === false){
+					dispatch(createNewProfile(user.user.uid, user.user.displayName, user.user.email))
+				}
+				dispatch(activeUser(user.user.uid));
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");

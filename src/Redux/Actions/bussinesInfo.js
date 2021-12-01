@@ -86,6 +86,22 @@ export const activeUser = (uid) =>{
 	}
 }
 
+export const existeUsuario = async (uid) => {
+	const usuariosRef = db.collection("Enterprises");
+	const usuarios = usuariosRef
+		.where("uid", "==", uid)
+		.get()
+		.then(retornaDocumentos);
+	const existe = await usuarios.then((resolve) => {
+		return resolve;
+	});
+	if (existe.length === 0) {
+		return false;
+	} else if (existe.length > 0) {
+		return true;
+	}
+};
+
 
 export const startNewInfo = (
 	CompanyName,

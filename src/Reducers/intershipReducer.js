@@ -1,7 +1,7 @@
 import { types } from "../Types/type";
 
 const initalState = {
-	interships: [],
+	interships: []
 };
 export const intershipReducer = (state = initalState, action) => {
 	switch (action.type) {
@@ -12,7 +12,8 @@ export const intershipReducer = (state = initalState, action) => {
 			};
 		case types.logout:
 			return {
-				checking: true,
+				...state,
+				interships: []
 			};
 
 		default:
