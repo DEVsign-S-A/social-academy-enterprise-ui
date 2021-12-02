@@ -13,6 +13,7 @@ import { PrivateRoute } from "./PrivateRoute";
 import MyProfileView from "../Views/MyProfileView";
 import MyProfile from "../Views/MyProfile";
 import ProfileScreen from "../Views/ProfileScreen";
+import DashboardScreen from "../Views/DashboardScreen";
 
 export const AppRouter = () => {
 	const { uid } = useSelector((state) => state.auth);
@@ -34,6 +35,13 @@ export const AppRouter = () => {
 							exact
 							path="/IntershipRequest"
 							component={IntershipRequest}
+							isAuth={!!uid}
+						/>
+
+						<PrivateRoute
+							exact
+							path="/Dashboard"
+							component={DashboardScreen}
 							isAuth={!!uid}
 						/>
 
