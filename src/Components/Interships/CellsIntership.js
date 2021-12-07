@@ -9,7 +9,6 @@ export const CellsIntership = ({
   solictudesRespustas,
 }) => {
 
-  console.log(solictudesRespustas)
   return (
     <div className="bg-gray-50 m-3 p-3 w-11/12 ring-1 ring-gray-200 shadow-sm rounded-md">
       <div className="flex justify-between my-2">
