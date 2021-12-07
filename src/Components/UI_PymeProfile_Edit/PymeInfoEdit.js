@@ -46,7 +46,7 @@ export const PymeInfoEdit = () => {
 		setTimeout(() => {
 			history.push('/')
 		}, 300);
-		console.log(CompanyName, SectorComercial, Phone, Cellphone, correo);
+		// console.log(CompanyName, SectorComercial, Phone, Cellphone, correo);
 	};*/
 
 	return (

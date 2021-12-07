@@ -17,7 +17,7 @@ export const SaveNewIntership = (
 	return async (dispatch, getState) => {
 		const MyUser = getState().auth;
 
-		console.log("pase");
+		// console.log("pase");
 		try {
 			const newIntership = {
 				EnterpriseID: MyUser.uid,
@@ -135,7 +135,7 @@ export const startDeleteResponseInterships = (
 			let { solictudesRespustas } = loadInter;
 
 			solictudesRespustas.splice(indexArray, 1);
-			// console.log(solictudesRespustas);
+			// // console.log(solictudesRespustas);
 			const usuariosRef = db.collection("Pasantias/Publicacion/Data");
 			await usuariosRef.doc(IdIntership).update({
 				solictudesRespustas: solictudesRespustas,
@@ -143,7 +143,7 @@ export const startDeleteResponseInterships = (
 			Swal.fire("Pasantía", "Has Removido al usuario con éxito", "success");
 			dispatch(startLoadingInterships());
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 };
@@ -154,13 +154,13 @@ export const startDeleteInterships = (
 	return async (dispatch) => {
 		try {
 
-			// console.log(solictudesRespustas);
+			// // console.log(solictudesRespustas);
 			const usuariosRef = db.collection("Pasantias/Publicacion/Data");
 			await usuariosRef.doc(IdIntership).delete();
 			Swal.fire("Pasantía", "Has Removido la pasantia con éxito", "success");
 			dispatch(startLoadingInterships());
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	};
 };

@@ -22,17 +22,33 @@ ChartJS.register(
 	Legend
 );
 export const ReportBar = (dataset) => {
-
 	const { interships } = useSelector((state) => state.interships);
 
-	let cantidad =	cantidadtotal(interships);
-	console.log(cantidad);
-
-	const { dataset: labels } = dataset;
+	let cantidad = cantidadtotal(interships);
 	// console.log(cantidad);
 
+	const { dataset: labels } = dataset;
+	// // console.log(cantidad);
+
 	const options = {
-		responsive: true,
+		scales: {
+			y: {
+				ticks: {
+					color: "#383874",
+					font: {
+						size: 12,
+					},
+				},
+			},
+			x: {
+				ticks: {
+					color: "#383874",
+					font: {
+						size: 12,
+					},
+				},
+			},
+		},
 		plugins: {
 			legend: {
 				position: "top",
@@ -53,7 +69,7 @@ export const ReportBar = (dataset) => {
 	// 	"June",
 	// 	"July",
 	// ];
-	// console.log(labels);
+	// // console.log(labels);
 
 	const data = {
 		labels,
@@ -61,15 +77,19 @@ export const ReportBar = (dataset) => {
 			{
 				label: "Dataset 1",
 				data: cantidad,
-				backgroundColor: "rgb(255, 99, 132)",
+				backgroundColor: "rgb(70, 166, 255)",
 			},
 			{
 				label: "Dataset 2",
 				data: cantidad,
-				backgroundColor: "rgb(75, 192, 192)",
+				backgroundColor: "rgb(37, 193, 150)",
 			},
 		],
 	};
 
-	return <Bar options={options} data={data} />;
+	return (
+		<div className="font-Poppins font-semibold rounded-lg m-5 bg-white shadow-lg ring-1 ring-gray-200">
+			<Bar options={options} data={data} />
+		</div>
+	);
 };

@@ -10,9 +10,17 @@ import {
 	Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { useSelector } from "react-redux";
+import { cantidadtotal } from "../../Helpers/intershipsDataNumber";
 
 export const ReportLine = (dataset) => {
-	const { dataset: kev } = dataset;
+	
+	const { interships } = useSelector((state) => state.interships);
+
+	let cantidad =	cantidadtotal(interships);
+	// console.log(cantidad);
+
+	const { dataset: labels } = dataset;
 
 	ChartJS.register(
 		CategoryScale,
@@ -24,49 +32,35 @@ export const ReportLine = (dataset) => {
 		Legend
 	);
 	const data = {
-		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+		labels,
 		datasets: [
 			{
-				label: "# of Votes",
-				data: [12, 19, 3, 5, 2, 3],
+				label: "# de Respuetas",
+				data: [1, 5, 2, 3],
 				backgroundColor: [
-					"rgba(255, 99, 132, 0.2)",
-					"rgba(54, 162, 235, 0.2)",
-					"rgba(255, 206, 86, 0.2)",
-					"rgba(75, 192, 192, 0.2)",
-					"rgba(153, 102, 255, 0.2)",
-					"rgba(255, 159, 64, 0.2)",
+					"rgba(65, 102, 146, 0.2)",
+					"rgba(17, 118, 244, 0.2)",
 				],
 				borderColor: [
-					"rgba(255, 99, 132, 1)",
-					"rgba(54, 162, 235, 1)",
-					"rgba(255, 206, 86, 1)",
-					"rgba(75, 192, 192, 1)",
-					"rgba(153, 102, 255, 1)",
-					"rgba(255, 159, 64, 1)",
+					"rgba(65, 102, 146, 1)",
+					"rgba(17, 118, 244, 1)",
 				],
-				borderWidth: 1,
+				borderWidth: 2,
 			},
 			{
-				label: "# of Votes",
-				data: [8, 9, 8, 15, 2, 13],
+				label: "# de Respuetas",
+				data: [5, 3, 2, 1],
+
+
 				backgroundColor: [
-					"rgba(255, 99, 132, 0.2)",
-					"rgba(54, 162, 235, 0.2)",
-					"rgba(255, 206, 86, 0.2)",
-					"rgba(75, 192, 192, 0.2)",
-					"rgba(153, 102, 255, 0.2)",
-					"rgba(255, 159, 64, 0.2)",
+					"rgba(65, 102, 146, 0.2)",
+					"rgba(17, 118, 244, 0.2)",
 				],
 				borderColor: [
-					"rgba(255, 99, 132, 1)",
-					"rgba(54, 162, 235, 1)",
-					"rgba(255, 206, 86, 1)",
-					"rgba(75, 192, 192, 1)",
-					"rgba(153, 102, 255, 1)",
-					"rgba(255, 159, 64, 1)",
+					"rgba(65, 102, 146, 1)",
+					"rgba(17, 118, 244, 1)",
 				],
-				borderWidth: 1,
+				borderWidth: 2,
 			},
 		],
 	};
@@ -75,20 +69,18 @@ export const ReportLine = (dataset) => {
 		scales: {
 			y: {
 				ticks: {
-					color: "white",
+					color: "#383874",
 					font: {
-						size: 18,
+						size: 15,
 					},
 				},
-				grid: {
-					color: "#243240",
-				},
+				
 			},
 			x: {
 				ticks: {
-					color: "white",
+					color: "#383874",
 					font: {
-						size: 18,
+						size: 15,
 					},
 				},
 			},
@@ -105,8 +97,8 @@ export const ReportLine = (dataset) => {
 	};
 
 	return (
-		<div>
-			<Line data={data} width={300} height={300} options={options} />
+		<div className='font-Poppins font rounded-lg m-5 bg-white shadow-lg ring-1 ring-gray-200'>
+			<Line data={data}  options={options} />
 		</div>
 	);
 };

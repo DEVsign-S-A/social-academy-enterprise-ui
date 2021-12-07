@@ -25,7 +25,7 @@ export const createNewProfile = (uid, name, email) =>{
         try {
             await db.collection("Enterprises").doc(`${uid}`).set(newPyme);
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     }
 }
@@ -48,7 +48,7 @@ export const updateBusinessProfile = (pymeInfo) => {
             dispatch(activeUser(uid));
             Swal.close();
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     }
 }
@@ -81,7 +81,7 @@ export const activeUser = (uid) =>{
 			const usuarioActivo = await usuarioRef.where("uid", "==", uid).get().then(retornaDocumentos);
 			dispatch(login(usuarioActivo[0]));
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		}
 	}
 }
@@ -131,7 +131,7 @@ export const existeUsuario = async (uid) => {
 			.collection(`/Enterprises/${uid}/InfoGeneral/`)
 			.add(newInfo);
 
-		console.log(doc);
+		// console.log(doc);
 	};
 };
 
@@ -174,7 +174,7 @@ export const startMoreinfo = (
 ) => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth;
-		console.log("Dispacth: ", info, Direction, TypeCompany, masinfo, extras);
+		// console.log("Dispacth: ", info, Direction, TypeCompany, masinfo, extras);
 
 		const moreInfo = {
 			Descripcion: info,
@@ -188,7 +188,7 @@ export const startMoreinfo = (
 			.collection(`/Enterprises/${uid}/InfoExtra/`)
 			.add(moreInfo);
 
-		console.log(doc);
+		// console.log(doc);
 	};
 };
 

@@ -147,7 +147,7 @@ const NewIntership = () => {
       )
     );
 
-    // console.log(
+    // // console.log(
     //   'titulo: ', titulo,
     //   'descBreve: ', descBreve,
     //   'descLarga: ', descLarga,

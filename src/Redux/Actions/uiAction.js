@@ -13,7 +13,7 @@ export const setToggleForm = (setState) =>({
 
 export const setItemSelected = (id) =>{
  
-    console.log(id);
+    // console.log(id);
     items(id)
 }
 

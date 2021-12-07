@@ -13,7 +13,7 @@ const IntershipRequest = () => {
     dispatch(startLoadingInterships());
   }, [dispatch]);
 
-  console.log(interships);
+  // console.log(interships);
 
   return (
     <>

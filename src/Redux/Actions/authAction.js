@@ -43,7 +43,7 @@ export const startNewLoginEmailPassword = (email, password) =>{
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");
-				console.log(e);
+				// console.log(e);
 			});
 	};
 };*/
@@ -62,7 +62,7 @@ export const startLoginWithGoogle = () => {
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");
-				console.log(e);
+				// console.log(e);
 			});
 	};
 };
@@ -81,7 +81,7 @@ export const startLoginWithGithub = () => {
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");
-				console.log(e);
+				// console.log(e);
 			});
 	};
 };
@@ -93,14 +93,14 @@ export const startLoginWithGithub = () => {
 			.createUserWithEmailAndPassword(email, pass)
 			.then(async (user) => {
 				await user.user.updateProfile({ displayName: name });
-				console.log(user);
+				// console.log(user);
 				dispatch(
 					login(user.user.uid, user.user.displayName, user.additionalUserInfo)
 				);
 			})
 			.catch((e) => {
 				Swal.fire("Error", e.message, "warning");
-				console.log(e);
+				// console.log(e);
 			});
 	};
 };*/
