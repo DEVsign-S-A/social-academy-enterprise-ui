@@ -1,6 +1,6 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import { PolarArea } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 import { cantidadtotal } from "../../Helpers/intershipsDataNumber";
 
@@ -65,7 +65,7 @@ export const ReportPie = (dataset) => {
 
 	return (
 		<div className="font-Poppins font-medium rounded-lg m-5 bg-white shadow-lg ring-1 ring-gray-200">
-			<Pie data={data} height={400} width={400} options={options} />
+			<PolarArea data={data} height={400} width={400} options={options} />
 		</div>
 	);
 };

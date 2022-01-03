@@ -83,9 +83,7 @@ const DashboardScreen = () => {
 							<div className="w-2/4">
 								<ReportRadar />
 							</div>
-							<div className="w-2/4">
-								<ReportPie dataset={dataset} />
-							</div>
+							
 						</div>
 					</div>
 				</div>
